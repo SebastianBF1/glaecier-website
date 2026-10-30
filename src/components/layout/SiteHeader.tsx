@@ -5,7 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import type { Dictionary } from "@/content/dictionaries";
 import { site } from "@/content/site";
 import { locales, type Locale } from "@/i18n/config";
-import { PrototypeAction } from "@/components/ui/buttons";
+import { links } from "@/content/links";
+import { ExternalAction } from "@/components/ui/buttons";
 import { Wordmark } from "@/components/ui/Wordmark";
 
 type NavItem = Dictionary["nav"]["items"][number];
@@ -161,13 +162,13 @@ export function SiteHeader({ t, locale }: { t: HeaderText; locale: Locale }) {
 
         <div className="ml-auto flex items-center gap-6 xl:gap-5 2xl:gap-7">
           <LanguageSwitch t={t} locale={locale} className="hidden xl:flex" />
-          <PrototypeAction tag={t.prototype.tag} variant="text" className="max-lg:hidden">
+          <ExternalAction href={links.memberLogin} newTab={t.nav.newTab} variant="text" className="max-lg:hidden">
             {t.nav.login}
-          </PrototypeAction>
+          </ExternalAction>
           <span aria-hidden="true" className="hidden h-5 w-px bg-current opacity-25 lg:max-xl:block 2xl:block" />
-          <PrototypeAction tag={t.prototype.tag} variant={solid ? "pillDark" : "pillLight"}>
+          <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant={solid ? "pillDark" : "pillLight"}>
             {t.nav.book}
-          </PrototypeAction>
+          </ExternalAction>
         </div>
       </div>
 
@@ -214,12 +215,12 @@ export function SiteHeader({ t, locale }: { t: HeaderText; locale: Locale }) {
 
           <div className="mt-auto space-y-8 pt-12">
             <div className="flex flex-wrap gap-3">
-              <PrototypeAction tag={t.prototype.tag} variant="solid">
+              <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="solid">
                 {t.nav.book}
-              </PrototypeAction>
-              <PrototypeAction tag={t.prototype.tag} variant="outline">
+              </ExternalAction>
+              <ExternalAction href={links.memberLogin} newTab={t.nav.newTab} variant="outline">
                 {t.nav.login}
-              </PrototypeAction>
+              </ExternalAction>
             </div>
             <div className="flex items-center justify-between border-t border-paper/20 pt-6 text-sm text-fog">
               <a href={`mailto:${site.email}`} className="hover:text-paper">

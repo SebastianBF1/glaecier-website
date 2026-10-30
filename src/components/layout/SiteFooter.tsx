@@ -2,7 +2,8 @@ import Link from "next/link";
 import type { Dictionary } from "@/content/dictionaries";
 import { site } from "@/content/site";
 import { locales, type Locale } from "@/i18n/config";
-import { PrototypeAction } from "@/components/ui/buttons";
+import { links } from "@/content/links";
+import { ExternalAction } from "@/components/ui/buttons";
 import { Wordmark } from "@/components/ui/Wordmark";
 
 export function SiteFooter({ t, locale }: { t: Dictionary; locale: Locale }) {
@@ -48,19 +49,19 @@ export function SiteFooter({ t, locale }: { t: Dictionary; locale: Locale }) {
             <h2 className="eyebrow text-fog">{t.footer.more}</h2>
             <ul className="mt-4 flex flex-col items-start gap-2">
               <li>
-                <PrototypeAction tag={t.prototype.tag} variant="text">
+                <ExternalAction href={links.faq[locale]} newTab={t.nav.newTab} variant="text">
                   {t.footer.faq}
-                </PrototypeAction>
+                </ExternalAction>
               </li>
               <li>
-                <PrototypeAction tag={t.prototype.tag} variant="text">
+                <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="text">
                   {t.footer.book}
-                </PrototypeAction>
+                </ExternalAction>
               </li>
               <li>
-                <PrototypeAction tag={t.prototype.tag} variant="text">
+                <ExternalAction href={links.memberLogin} newTab={t.nav.newTab} variant="text">
                   {t.footer.login}
-                </PrototypeAction>
+                </ExternalAction>
               </li>
             </ul>
           </div>

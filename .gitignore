@@ -7,14 +7,18 @@ out/
 next-env.d.ts
 *.tsbuildinfo
 
-# Original photography (~1.2 GB). Kept locally only.
+# Original photography (~1.2 GB) and source video (with audio). Kept locally only.
 assets/images/*
 !assets/images/.gitkeep
+assets/videos/*
+!assets/videos/.gitkeep
 
 # Web photos: only those the published homepage uses are committed (all supplied photos are approved;
 # the rest, the rejected/AI images and the dev-only Hero A photo stay local).
 # To publish another photo, add its .jpg and its -320/-640 (???) and -1080/-1600 (????) .webp sizes here.
 public/media/*
+!public/media/hero-video.mp4
+!public/media/hero-video-poster.jpg
 !public/media/dsc07485.jpg
 !public/media/dsc07485-???.webp
 !public/media/dsc07485-????.webp

@@ -16,6 +16,7 @@ export const site = {
   ],
   // Absolute site root for metadata (canonical, hreflang, Open Graph). Set by the Pages workflow; replace at launch.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000/",
-  // Hero shown in production builds – "b" approved by the client 2026-10-30. In `npm run dev` a switcher still compares "a" and "b".
-  heroVariant: "b" as "a" | "b",
+  // Hero shown in production builds. "video" = video hero (pending client approval); "b" = approved image hero,
+  // kept as the fallback. In `npm run dev` a switcher compares "video", "b" and "a".
+  heroVariant: "video" as "video" | "a" | "b",
 } as const;

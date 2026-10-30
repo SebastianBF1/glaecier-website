@@ -4,8 +4,10 @@ import type { Dictionary } from "@/content/dictionaries";
 import { getMedia, media, type MediaItem } from "@/content/media";
 import { site } from "@/content/site";
 import type { Locale } from "@/i18n/config";
-import { buttonClass, PrototypeAction } from "@/components/ui/buttons";
+import { links } from "@/content/links";
+import { buttonClass, ExternalAction } from "@/components/ui/buttons";
 import { Wordmark } from "@/components/ui/Wordmark";
+import { AmbientVideo } from "./AmbientVideo";
 import { HeroSwitcher } from "./HeroSwitcher";
 
 type Props = { t: Dictionary; locale: Locale };
@@ -61,9 +63,9 @@ function HeroGolden({ t, locale }: Props) {
           <a href="#membership" className={buttonClass("text")}>
             {t.hero.primary}
           </a>
-          <PrototypeAction tag={t.prototype.tag} variant="text">
+          <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="text">
             {t.hero.secondary}
-          </PrototypeAction>
+          </ExternalAction>
         </div>
       </div>
     </HeroFrame>
@@ -85,9 +87,9 @@ function HeroNordic({ t, locale }: Props) {
             <a href="#membership" className={buttonClass("solid")}>
               {t.hero.primary}
             </a>
-            <PrototypeAction tag={t.prototype.tag} variant="outline">
+            <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="outline">
               {t.hero.secondary}
-            </PrototypeAction>
+            </ExternalAction>
           </div>
         </div>
       </div>
@@ -95,9 +97,58 @@ function HeroNordic({ t, locale }: Props) {
   );
 }
 
+/**
+ * Video hero – an evolution of Hero B. The only footage is a 464×832 portrait clip, so it is never stretched:
+ * portrait screens show it full-bleed (about native size on phones); landscape screens show it sharp in a framed
+ * panel over a blurred, dimmed copy of itself. "quietude" is baked into the clip at mid-height, so the copy sits
+ * at the bottom (portrait) or on the left (landscape), clear of it.
+ */
+function HeroVideo({ t }: Props) {
+  const v = t.hero.video;
+  return (
+    <section aria-labelledby="hero-title" className="relative isolate flex h-svh min-h-[36rem] items-end overflow-hidden bg-ink text-paper">
+      <AmbientVideo className="absolute inset-0 -z-10 h-full w-full object-cover md:landscape:scale-110 md:landscape:opacity-45 md:landscape:blur-2xl" />
+      {/* Right edge follows the page grid on wide screens (1440px container + 2.5rem padding). */}
+      <div className="absolute right-[max(6vw,calc((100vw-1440px)/2+2.5rem))] bottom-[8svh] -z-10 hidden aspect-[464/832] h-[76svh] overflow-hidden shadow-[0_40px_90px_-40px_rgb(0_0_0/0.7)] md:landscape:block">
+        <AmbientVideo className="h-full w-full object-cover" />
+      </div>
+      {/* Scrims only where text sits: the header band and the copy area. */}
+      <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-48 bg-gradient-to-b from-ink/50 to-transparent" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-gradient-to-t from-ink/75 via-ink/10 via-45% to-transparent md:landscape:bg-gradient-to-r md:landscape:from-ink/55 md:landscape:via-ink/15 md:landscape:via-55%"
+      />
+
+      <div className="hero-copy container-page pb-12 md:pb-20">
+        <div className="w-[min(68vw,30rem)] md:landscape:w-[min(42vw,40rem)]">
+          <Title />
+        </div>
+        <p className="mt-6 font-serif text-[1.75rem] leading-tight font-light md:text-4xl">{v.title}</p>
+        <p className="mt-2 text-paper/85 md:text-lg">{v.sub}</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="solid">
+            {t.hero.secondary}
+          </ExternalAction>
+          <a href="#membership" className={buttonClass("outline")}>
+            {v.membership}
+          </a>
+        </div>
+      </div>
+
+      <a
+        href="#intro-title"
+        className="eyebrow absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 text-[0.625rem] text-paper/75 transition-colors hover:text-paper md:flex"
+      >
+        {v.scroll}
+        <span aria-hidden="true" className="scroll-line" />
+      </a>
+    </section>
+  );
+}
+
 export function Hero(props: Props) {
-  const variants = { a: <HeroGolden {...props} />, b: <HeroNordic {...props} /> };
-  // Development only: compare both heroes. Production renders the chosen one without a switcher.
+  const variants = { video: <HeroVideo {...props} />, b: <HeroNordic {...props} />, a: <HeroGolden {...props} /> };
+  // Development only: compare the heroes. Production renders the chosen one without a switcher.
   if (process.env.NODE_ENV === "development") {
     return <HeroSwitcher initial={site.heroVariant} labels={props.t.hero.switcher} variants={variants} />;
   }

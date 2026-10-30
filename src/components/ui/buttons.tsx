@@ -15,32 +15,25 @@ export type ButtonVariant = keyof typeof variants;
 export const buttonClass = (variant: ButtonVariant, extra = "") =>
   `inline-flex items-center justify-center gap-2.5 whitespace-nowrap text-[0.75rem] font-medium uppercase tracking-[0.16em] transition-[color,background-color,border-color,background-size] duration-500 ease-calm ${variants[variant]} ${extra}`;
 
-/**
- * A call to action that is not wired up yet. It is announced and styled as unavailable so the prototype
- * never passes itself off as working booking, login or application.
- */
-export function PrototypeAction({
+/** Link into one of GLAECIER's official systems (see src/content/links.ts). Opens in a new tab. */
+export function ExternalAction({
+  href,
   children,
-  tag,
+  newTab,
   variant = "outline",
   className = "",
 }: {
+  href: string;
   children: ReactNode;
-  tag: string;
+  /** Screen-reader note, e.g. "(opens in a new tab)". */
+  newTab: string;
   variant?: ButtonVariant;
   className?: string;
 }) {
   return (
-    <button
-      type="button"
-      aria-disabled="true"
-      aria-describedby="prototype-note"
-      className={buttonClass(variant, `cursor-not-allowed ${className}`)}
-    >
+    <a href={href} target="_blank" rel="noopener noreferrer" className={buttonClass(variant, className)}>
       {children}
-      <span className="rounded-full border border-current/50 px-1.5 py-px text-[0.5625rem] leading-tight tracking-[0.12em] opacity-75">
-        {tag}
-      </span>
-    </button>
+      <span className="sr-only"> {newTab}</span>
+    </a>
   );
 }

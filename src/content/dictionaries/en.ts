@@ -8,9 +8,7 @@ export const en: Dictionary = {
       "Glaecier is a floating sauna community in Copenhagen with a panorama sauna and a floating pool of filtered harbour water. Members’ club at Refshaleøen – Havnegade coming soon.",
   },
   prototype: {
-    banner: "Prototype – booking, login and applications are not connected yet.",
-    tag: "Prototype",
-    note: "Prototype: this action is not active yet.",
+    banner: "Preview of the new website – booking and login take place on glaecier.com.",
   },
   nav: {
     label: "Main menu",
@@ -20,6 +18,7 @@ export const en: Dictionary = {
     book: "Book",
     login: "Login",
     home: "Glaecier – home",
+    newTab: "(opens in a new tab)",
     language: { label: "Language", current: "EN", switchTo: "Dansk" },
     items: [
       { id: "membership", label: "Membership", children: [] },
@@ -41,7 +40,8 @@ export const en: Dictionary = {
     tagline: "Calm sauna experiences on the water in Copenhagen – with a focus on wellbeing, health and community.",
     primary: "Membership",
     secondary: "Book Open Gus",
-    switcher: { label: "Hero variant (development only)", a: "A · Golden hour", b: "B · Nordic architecture" },
+    video: { title: "A sanctuary on the water.", sub: "Sauna, bathing and community in Copenhagen.", membership: "Explore membership", scroll: "Scroll" },
+    switcher: { label: "Hero variant (development only)", a: "A · Golden hour", b: "B · Nordic architecture", video: "Video" },
   },
   intro: {
     eyebrow: "Glaecier · Refshaleøen",

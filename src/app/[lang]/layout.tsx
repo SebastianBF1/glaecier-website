@@ -53,10 +53,6 @@ export default async function RootLayout({ children, params }: Props) {
         <a href="#main" className="sr-only z-50 bg-ink px-4 py-3 text-paper focus:not-sr-only focus:fixed focus:top-3 focus:left-3">
           {t.nav.skip}
         </a>
-        {/* Referenced by every PrototypeAction via aria-describedby. */}
-        <p id="prototype-note" hidden>
-          {t.prototype.note}
-        </p>
         {children}
       </body>
     </html>

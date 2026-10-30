@@ -14,9 +14,7 @@ export const da = {
       "Glaecier er et flydende saunafællesskab i København med panorama-sauna og flydende pool med filtreret havnevand. Medlemsklub på Refshaleøen – snart også i Havnegade.",
   },
   prototype: {
-    banner: "Prototype – booking, login og ansøgning er ikke forbundet endnu.",
-    tag: "Prototype",
-    note: "Prototype: denne handling er ikke aktiv endnu.",
+    banner: "Forhåndsvisning af ny hjemmeside – booking og login foregår på glaecier.com.",
   },
   nav: {
     label: "Hovedmenu",
@@ -26,6 +24,7 @@ export const da = {
     book: "Book",
     login: "Log ind",
     home: "Glaecier – forside",
+    newTab: "(åbner i en ny fane)",
     language: { label: "Sprog", current: "DA", switchTo: "English" },
     items: [
       { id: "membership", label: "Medlemskab", children: [] },
@@ -49,7 +48,9 @@ export const da = {
     tagline: "Rolige saunaoplevelser på vandet i København – med fokus på velvære, sundhed og fællesskab.",
     primary: "Medlemskab",
     secondary: "Book Open Gus",
-    switcher: { label: "Hero-variant (kun udvikling)", a: "A · Gylden time", b: "B · Nordisk arkitektur" },
+    // DRAFT – client-proposed direction (2026-10-30)
+    video: { title: "Et frirum på vandet.", sub: "Sauna, bad og fællesskab i København.", membership: "Udforsk medlemskab", scroll: "Rul ned" },
+    switcher: { label: "Hero-variant (kun udvikling)", a: "A · Gylden time", b: "B · Nordisk arkitektur", video: "Video" },
   },
   intro: {
     eyebrow: "Glaecier · Refshaleøen",

@@ -2,29 +2,28 @@
 
 import { Fragment, useEffect, useState, type ReactNode } from "react";
 
-type Variant = "a" | "b";
-
-/** Development-only toggle between hero options. `?hero=a` / `?hero=b` makes a variant linkable. */
-export function HeroSwitcher({
+/** Development-only toggle between hero options. `?hero=<key>` (e.g. `?hero=b`) makes a variant linkable. */
+export function HeroSwitcher<K extends string>({
   initial,
   labels,
   variants,
 }: {
-  initial: Variant;
-  labels: { label: string; a: string; b: string };
-  variants: Record<Variant, ReactNode>;
+  initial: K;
+  labels: { label: string } & Record<K, string>;
+  variants: Record<K, ReactNode>;
 }) {
-  const [variant, setVariant] = useState<Variant>(initial);
+  const [variant, setVariant] = useState<K>(initial);
+  const keys = Object.keys(variants) as K[];
 
   useEffect(() => {
     const fromUrl = () => {
       const q = new URLSearchParams(window.location.search).get("hero");
-      if (q === "a" || q === "b") setVariant(q);
+      if (q && q in variants) setVariant(q as K);
     };
     fromUrl();
-  }, []);
+  }, [variants]);
 
-  const choose = (v: Variant) => {
+  const choose = (v: K) => {
     setVariant(v);
     const url = new URL(window.location.href);
     url.searchParams.set("hero", v);
@@ -33,7 +32,7 @@ export function HeroSwitcher({
 
   return (
     <>
-      {/* Keyed so <picture> remounts: browsers don't re-pick an image when only <source> srcsets change. */}
+      {/* Keyed so <picture>/<video> remount: browsers don't re-pick media when only <source> srcsets change. */}
       <Fragment key={variant}>{variants[variant]}</Fragment>
       <div
         role="group"
@@ -41,7 +40,7 @@ export function HeroSwitcher({
         className="fixed right-4 bottom-4 z-50 flex items-center gap-1 rounded-full bg-ink/85 p-1 text-[0.6875rem] text-paper shadow-lg backdrop-blur"
       >
         <span className="px-3 opacity-70">DEV</span>
-        {(["a", "b"] as const).map((v) => (
+        {keys.map((v) => (
           <button
             key={v}
             type="button"

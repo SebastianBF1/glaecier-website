@@ -1,7 +1,8 @@
 import type { Dictionary } from "@/content/dictionaries";
 import { media } from "@/content/media";
 import type { Locale } from "@/i18n/config";
-import { PrototypeAction } from "@/components/ui/buttons";
+import { links } from "@/content/links";
+import { ExternalAction } from "@/components/ui/buttons";
 import { Photo } from "@/components/ui/Photo";
 import { SectionIntro } from "@/components/ui/SectionIntro";
 
@@ -27,17 +28,17 @@ export function Membership({ t, locale }: { t: Dictionary; locale: Locale }) {
               <p className="eyebrow text-fog">{lobby.label}</p>
               <h3 className="mt-3 font-serif text-3xl font-light">{lobby.title}</h3>
               <p className="mt-4 max-w-sm leading-relaxed text-paper/80">{lobby.body}</p>
-              <PrototypeAction tag={t.prototype.tag} variant="solid" className="mt-8">
+              <ExternalAction href={links.signupRefshaleoen} newTab={t.nav.newTab} variant="solid" className="mt-8">
                 {lobby.cta}
-              </PrototypeAction>
+              </ExternalAction>
             </div>
             <div className="reveal border-t border-paper/25 pt-7">
               <p className="eyebrow text-fog">{havnegade.label}</p>
               <h3 className="mt-3 font-serif text-3xl font-light">{havnegade.title}</h3>
               <p className="mt-4 max-w-sm leading-relaxed text-paper/80">{havnegade.body}</p>
-              <PrototypeAction tag={t.prototype.tag} variant="text" className="mt-8">
+              <ExternalAction href={links.signupHavnegade} newTab={t.nav.newTab} variant="text" className="mt-8">
                 {havnegade.cta}
-              </PrototypeAction>
+              </ExternalAction>
             </div>
           </div>
 

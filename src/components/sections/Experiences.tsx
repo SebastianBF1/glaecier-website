@@ -1,7 +1,8 @@
 import type { Dictionary } from "@/content/dictionaries";
 import { media } from "@/content/media";
 import type { Locale } from "@/i18n/config";
-import { PrototypeAction } from "@/components/ui/buttons";
+import { links } from "@/content/links";
+import { ExternalAction } from "@/components/ui/buttons";
 import { Photo } from "@/components/ui/Photo";
 import { SectionIntro } from "@/components/ui/SectionIntro";
 
@@ -23,9 +24,9 @@ export function Experiences({ t, locale }: { t: Dictionary; locale: Locale }) {
           <SectionIntro eyebrow={t.experiences.eyebrow} heading={t.experiences.heading} headingId="experiences-title" className="text-wood [&_h2]:text-ink" />
           <p className="reveal mt-6 text-lg leading-relaxed text-stone">{t.experiences.lead}</p>
           <div className="reveal mt-10">
-            <PrototypeAction tag={t.prototype.tag} variant="dark">
+            <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="dark">
               {t.experiences.cta}
-            </PrototypeAction>
+            </ExternalAction>
           </div>
         </div>
       </div>

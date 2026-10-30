@@ -1,0 +1,60 @@
+# Builds the static site and publishes it to GitHub Pages:
+#   https://sebastianbf1.github.io/glaecier-website/
+# Runs only for the `preview` branch (approved updates) or a manual run. It never touches glaecier.com.
+name: Deploy preview to GitHub Pages
+
+on:
+  push:
+    branches: [preview]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; a newer push replaces a queued one but never cancels one mid-deploy.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+
+      - name: Build static export
+        run: npm run build
+        env:
+          PAGES_BASE_PATH: /glaecier-website
+          NEXT_PUBLIC_SITE_URL: https://sebastianbf1.github.io/glaecier-website/
+          NEXT_TELEMETRY_DISABLED: 1
+
+      - name: Check every referenced asset is in the export
+        run: npm run check:export
+        env:
+          PAGES_BASE_PATH: /glaecier-website
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

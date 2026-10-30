@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #1c1b19;
+  --color-paper: #f5f1ea;
+  --color-sand: #e9e0d2;
+  --color-stone: #625b52; /* muted text on paper: 5.9:1 */
+  --color-wood: #835733; /* accent text on paper: 5.6:1 */
+  --color-harbour: #233743;
+  --color-mist: #cfd6d6;
+  --color-fog: #b9b0a4; /* muted text on ink/harbour */
+
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--color-sand);
+    color: var(--color-ink);
+  }
+}
+
+@layer components {
+  .container-page {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 1440px;
+    padding-inline: 1.25rem;
+    @media (width >= 48rem) {
+      padding-inline: 2.5rem;
+    }
+  }
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  /* Hairline that draws in from the left on hover/focus. */
+  .link-underline {
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    transition: background-size 0.5s var(--ease-calm);
+    &:hover,
+    &:focus-visible,
+    &[aria-expanded="true"] {
+      background-size: 100% 1px;
+    }
+  }
+}
+
+/* Motion: only for people who have not asked to reduce it, and only where scroll-driven timelines exist.
+   Everything is fully visible without it. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+    /* Frame opens from a slight inset while the photo settles. */
+    .img-reveal {
+      animation: unveil linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 35%;
+      & img {
+        animation: settle linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 50%;
+      }
+    }
+    /* Slow drift inside a fixed frame for viewport-sized images. */
+    .img-parallax img {
+      scale: 1.12;
+      animation: drift linear both;
+      animation-timeline: view();
+    }
+  }
+  .hero-image {
+    animation: settle 2.4s var(--ease-calm) both;
+  }
+  .hero-copy {
+    animation: rise 1.4s 0.3s var(--ease-calm) both;
+  }
+  .menu-dialog {
+    opacity: 0;
+    translate: 0 -0.75rem;
+    transition:
+      opacity 0.45s var(--ease-calm),
+      translate 0.45s var(--ease-calm),
+      overlay 0.45s allow-discrete,
+      display 0.45s allow-discrete;
+    &[open] {
+      opacity: 1;
+      translate: 0;
+    }
+    &[open] .menu-item {
+      animation: rise 0.8s var(--ease-calm) both;
+    }
+    &[open] .menu-item:nth-child(2) { animation-delay: 60ms; }
+    &[open] .menu-item:nth-child(3) { animation-delay: 120ms; }
+    &[open] .menu-item:nth-child(4) { animation-delay: 180ms; }
+  }
+  @starting-style {
+    .menu-dialog[open] {
+      opacity: 0;
+      translate: 0 -0.75rem;
+    }
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+}
+@keyframes unveil {
+  from {
+    clip-path: inset(10% 6% 0 6%);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes drift {
+  from {
+    translate: 0 -5%;
+  }
+  to {
+    translate: 0 5%;
+  }
+}
+@keyframes settle {
+  from {
+    transform: scale(1.06);
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+}

@@ -1,0 +1,78 @@
+# dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# Original photography (~1.2 GB). Kept locally only.
+assets/images/*
+!assets/images/.gitkeep
+
+# Web photos: only those the published homepage uses are committed (all supplied photos are approved;
+# the rest, the rejected/AI images and the dev-only Hero A photo stay local).
+# To publish another photo, add its .jpg and its -320/-640 (???) and -1080/-1600 (????) .webp sizes here.
+public/media/*
+!public/media/dsc07485.jpg
+!public/media/dsc07485-???.webp
+!public/media/dsc07485-????.webp
+!public/media/dsc07593.jpg
+!public/media/dsc07593-???.webp
+!public/media/dsc07593-????.webp
+!public/media/dsc07600.jpg
+!public/media/dsc07600-???.webp
+!public/media/dsc07600-????.webp
+!public/media/dsc07608.jpg
+!public/media/dsc07608-???.webp
+!public/media/dsc07608-????.webp
+!public/media/dsc07649.jpg
+!public/media/dsc07649-???.webp
+!public/media/dsc07649-????.webp
+!public/media/dsc07737.jpg
+!public/media/dsc07737-???.webp
+!public/media/dsc07737-????.webp
+!public/media/dsc07767.jpg
+!public/media/dsc07767-???.webp
+!public/media/dsc07767-????.webp
+!public/media/dsc07799.jpg
+!public/media/dsc07799-???.webp
+!public/media/dsc07799-????.webp
+!public/media/dsc07838.jpg
+!public/media/dsc07838-???.webp
+!public/media/dsc07838-????.webp
+!public/media/dsc07850.jpg
+!public/media/dsc07850-???.webp
+!public/media/dsc07850-????.webp
+!public/media/dsc07890.jpg
+!public/media/dsc07890-???.webp
+!public/media/dsc07890-????.webp
+!public/media/dsc07963.jpg
+!public/media/dsc07963-???.webp
+!public/media/dsc07963-????.webp
+!public/media/dsc07974.jpg
+!public/media/dsc07974-???.webp
+!public/media/dsc07974-????.webp
+!public/media/dsc08000.jpg
+!public/media/dsc08000-???.webp
+!public/media/dsc08000-????.webp
+!public/media/dsc08017.jpg
+!public/media/dsc08017-???.webp
+!public/media/dsc08017-????.webp
+!public/media/dsc08083.jpg
+!public/media/dsc08083-???.webp
+!public/media/dsc08083-????.webp
+!public/media/dsc08152.jpg
+!public/media/dsc08152-???.webp
+!public/media/dsc08152-????.webp
+# Internal working docs and screenshots – local only
+docs/
+
+# local env / OS / editor
+.env*
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

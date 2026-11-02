@@ -44,6 +44,8 @@ export const media = {
       mobile: m("dsc07608", "Poolen set fra trappen, med pergola og havn bagved", "The pool seen from the steps, with the pergola and harbour beyond", "50% 60%"),
     },
   },
+  // Desktop backdrop behind the video panel (decorative, so no alt is rendered).
+  heroVideoBackdrop: m("dsc07767", "Mørkt rum med vindue mod havnen og en lille båd", "Dark room with a window onto the harbour and a small boat", "50% 62%"),
   intro: m("dsc07974", "To udendørs brusere ved vandet under en lav, grå himmel", "Two outdoor showers by the water under a low grey sky", "50% 55%"),
   // All supplied photos, including those showing people, are approved for publication (client, 2026-10-30).
   // Changing a slug here also means updating the public/media allow-list in .gitignore (`npm run check:export` catches misses).
@@ -61,7 +63,7 @@ export const media = {
       m("dsc07838", "Saunasten og spand til gus", "Sauna stones and a bucket for gus", "50% 50%"),
     ],
   },
-  membership: m("dsc08083", "En gæst med saunahat ved vinduet", "A guest in a sauna hat by the window", "62% 40%"),
+  membership: m("dsc08126", "En gæst med saunahat ser ud over havnen og en gul havnebus", "A guest in a sauna hat looking out over the harbour and a yellow harbour bus", "64% 45%"),
   locations: {
     refshaleoen: m("dsc08017", "En liggestol i træ på dækket ud mod havnen", "A wooden lounger on the deck facing the harbour", "45% 60%"),
     // No photograph of Havnegade exists yet; the component renders a neutral placeholder.
@@ -75,7 +77,7 @@ export const media = {
       m("dsc07737", "Badedragt med Glaecier-logo på bøjle", "Glaecier-branded swimwear on a hanger", "50% 40%"),
     ],
   },
-  philosophy: m("dsc07767", "Udsigt gennem vinduet til havnen og en lille båd", "View through the window to the harbour and a small boat", "50% 55%"),
+  philosophy: m("dsc07782", "Stearinlys og duftpinde i vindueskarmen", "Candles and a reed diffuser on the windowsill", "50% 55%"),
   og: m("dsc07485", "Glaecier ved Refshaleøen", "Glaecier at Refshaleøen"),
 };
 

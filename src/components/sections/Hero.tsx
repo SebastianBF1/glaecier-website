@@ -98,25 +98,42 @@ function HeroNordic({ t, locale }: Props) {
 }
 
 /**
- * Video hero – an evolution of Hero B. The only footage is a 464×832 portrait clip, so it is never stretched:
- * portrait screens show it full-bleed (about native size on phones); landscape screens show it sharp in a framed
- * panel over a blurred, dimmed copy of itself. "quietude" is baked into the clip at mid-height, so the copy sits
- * at the bottom (portrait) or on the left (landscape), clear of it.
+ * Video hero – an evolution of Hero B. The only footage is a 464×832 portrait clip, so it is never stretched.
+ * Portrait screens: the clip fills the upper part and fades into a dark band that carries the copy, which keeps the
+ * baked-in "quietude" (mid-height in the clip) well clear of the wordmark.
+ * Landscape screens: the clip plays sharp in a framed panel (never upscaled beyond ~1.05×) against a sharp, dark
+ * photograph of a window onto the harbour, with the copy on the left.
  */
 function HeroVideo({ t }: Props) {
   const v = t.hero.video;
+  const backdrop = media.heroVideoBackdrop;
+  const b = getMedia(backdrop);
+  const { props: { srcSet: backdropSet } } = getImageProps({ src: b.src, width: b.width, height: b.height, alt: "", sizes: "135vw" });
   return (
     <section aria-labelledby="hero-title" className="relative isolate flex h-svh min-h-[36rem] items-end overflow-hidden bg-ink text-paper">
-      <AmbientVideo className="absolute inset-0 -z-10 h-full w-full object-cover md:landscape:scale-110 md:landscape:opacity-45 md:landscape:blur-2xl" />
+      {/* Portrait: full-width clip. Hidden (and never loaded or played) on landscape screens. */}
+      <AmbientVideo className="absolute inset-x-0 top-0 -z-10 h-[86%] w-full object-cover md:landscape:hidden" />
+      {/* Landscape: decorative backdrop. Only the landscape <source> carries the photo, so portrait screens get the
+          1px placeholder and never download it (a hidden <img> alone would still be fetched). Enlarged from the left
+          edge so the bright window sits behind the video panel and the copy rests on the dark interior wall. */}
+      <picture className="absolute inset-0 -z-10 hidden overflow-hidden md:landscape:block">
+        <source media="(orientation: landscape) and (min-width: 768px)" srcSet={backdropSet} sizes="135vw" />
+        <img
+          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+          alt=""
+          className="h-full w-full origin-left scale-[1.35] object-cover"
+          style={{ objectPosition: backdrop.position }}
+        />
+      </picture>
       {/* Right edge follows the page grid on wide screens (1440px container + 2.5rem padding). */}
-      <div className="absolute right-[max(6vw,calc((100vw-1440px)/2+2.5rem))] bottom-[8svh] -z-10 hidden aspect-[464/832] h-[76svh] overflow-hidden shadow-[0_40px_90px_-40px_rgb(0_0_0/0.7)] md:landscape:block">
+      <div className="absolute right-[max(6vw,calc((100vw-1440px)/2+2.5rem))] bottom-[7svh] -z-10 hidden aspect-[464/832] h-[78svh] max-h-[52rem] overflow-hidden shadow-[0_40px_90px_-40px_rgb(0_0_0/0.8)] ring-1 ring-paper/15 md:landscape:block">
         <AmbientVideo className="h-full w-full object-cover" />
       </div>
       {/* Scrims only where text sits: the header band and the copy area. */}
       <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-48 bg-gradient-to-b from-ink/50 to-transparent" />
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-gradient-to-t from-ink/75 via-ink/10 via-45% to-transparent md:landscape:bg-gradient-to-r md:landscape:from-ink/55 md:landscape:via-ink/15 md:landscape:via-55%"
+        className="absolute inset-0 -z-10 bg-gradient-to-t from-ink from-15% via-ink/70 via-35% to-transparent to-60% md:landscape:bg-gradient-to-r md:landscape:from-ink/70 md:landscape:from-0% md:landscape:via-ink/35 md:landscape:via-45% md:landscape:to-ink/20 md:landscape:to-100%"
       />
 
       <div className="hero-copy container-page pb-12 md:pb-20">

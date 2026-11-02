@@ -37,8 +37,12 @@ export function Locations({ t, locale }: { t: Dictionary; locale: Locale }) {
 
         <article aria-labelledby="loc-havnegade" className="mt-24 grid gap-y-8 md:mt-32 md:grid-cols-12 md:gap-x-10">
           {/* No photography of Havnegade yet – neutral placeholder, deliberately not a stand-in photo. */}
-          <div className="reveal flex aspect-[4/3] w-3/4 items-end bg-mist/70 p-5 md:col-span-3 md:col-start-5 md:w-full">
-            <p className="eyebrow text-harbour">{havnegade.placeholder}</p>
+          <div className="reveal flex aspect-[4/3] w-3/4 flex-col justify-between bg-harbour p-5 text-paper md:col-span-3 md:col-start-5 md:w-full md:p-6">
+            <p className="eyebrow text-fog">{havnegade.placeholder}</p>
+            {/* Decorative; the expected opening is stated (and qualified) in the status line. */}
+            <p aria-hidden="true" className="font-serif text-6xl leading-none font-light tracking-tight md:text-7xl">
+              2027
+            </p>
           </div>
           <div className="reveal md:col-span-4 md:col-start-9 md:self-end">
             <p className="eyebrow text-wood">{havnegade.status}</p>

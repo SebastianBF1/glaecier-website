@@ -3,6 +3,7 @@ import { media } from "@/content/media";
 import type { Locale } from "@/i18n/config";
 import { links } from "@/content/links";
 import { buttonClass, ExternalAction } from "@/components/ui/buttons";
+import { Clip } from "@/components/ui/Clip";
 import { Photo } from "@/components/ui/Photo";
 import { SectionIntro } from "@/components/ui/SectionIntro";
 
@@ -13,12 +14,12 @@ export function Experiences({ t, locale }: { t: Dictionary; locale: Locale }) {
   return (
     <section id="experiences" aria-labelledby="experiences-title" className="bg-sand/60 py-28 md:py-44">
       <div className="container-page grid gap-y-12 lg:grid-cols-12 lg:gap-x-10">
-        <Photo
-          item={media.experiences.main}
-          locale={locale}
-          sizes="(min-width: 1024px) 62vw, 100vw"
-          effect="reveal"
-          className="-mx-5 aspect-[4/5] md:-mx-10 md:aspect-[4/3] lg:col-span-7 lg:mr-0 lg:aspect-[6/7]"
+        {/* Portrait frame on every screen: the clip is 9:16, so a landscape crop would lose most of it. */}
+        <Clip
+          src={media.experiences.clip.src}
+          poster={media.experiences.clip.poster}
+          label={media.experiences.clip.alt[locale]}
+          className="-mx-5 aspect-[4/5] md:-mx-10 lg:col-span-7 lg:mr-0 lg:aspect-[6/7]"
         />
         <div className="max-w-xl lg:col-span-4 lg:col-start-9 lg:self-end lg:pb-8">
           <SectionIntro eyebrow={t.experiences.eyebrow} heading={t.experiences.heading} headingId="experiences-title" className="text-wood [&_h2]:text-ink" />

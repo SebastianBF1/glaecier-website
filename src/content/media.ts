@@ -60,7 +60,15 @@ export const media = {
     deck: m("dsc07963", "Dækket med liggestole og en glaspavillon ud mod vandet", "The deck with loungers and a glazed pavilion facing the water", "62% 50%"),
   },
   experiences: {
-    main: m("dsc07649", "En gusmester gør klar i saunaen med et håndklæde", "A gusmaster preparing in the sauna with a towel", "50% 35%"),
+    // Phone clip (464×832, 7.9 s) shown at native size; a higher-resolution original would look sharper on large screens.
+    clip: {
+      src: "/media/experiences-gus.mp4",
+      poster: "/media/experiences-gus-poster.jpg",
+      alt: {
+        da: "En gusmester ved vinduet og gæster på bænkene under en gus i panorama-saunaen",
+        en: "A gusmaster by the window and guests on the benches during a gus in the panorama sauna",
+      },
+    },
     // Order matches experiences.featured in the dictionaries.
     featured: [
       m("dsc07593", "En gæst i saunaen ser ud over havnen", "A guest in the sauna looking out over the harbour", "50% 40%"),

@@ -46,7 +46,8 @@ export const media = {
   },
   // Desktop backdrop behind the video panel (decorative, so no alt is rendered).
   heroVideoBackdrop: m("dsc07767", "Mørkt rum med vindue mod havnen og en lille båd", "Dark room with a window onto the harbour and a small boat", "50% 62%"),
-  intro: m("dsc07974", "To udendørs brusere ved vandet under en lav, grå himmel", "Two outdoor showers by the water under a low grey sky", "50% 55%"),
+  // A quiet human moment straight after the hero: a guest by the window, seen through glass and reflections.
+  intro: m("dsc07653", "En gæst ved vinduet, set gennem glas og spejlinger", "A guest by the window, seen through glass and reflections", "42% 45%"),
   // All supplied photos, including those showing people, are approved for publication (client, 2026-10-30).
   // Changing a slug here also means updating the public/media allow-list in .gitignore (`npm run check:export` catches misses).
   facilities: {
@@ -65,7 +66,8 @@ export const media = {
       m("dsc08088", "En gæst hviler mellem runderne", "A guest resting between rounds", "56% 50%"),
     ],
   },
-  membership: m("dsc08126", "En gæst med saunahat ser ud over havnen og en gul havnebus", "A guest in a sauna hat looking out over the harbour and a yellow harbour bus", "64% 45%"),
+  // Shown as a sticky, screen-height panel on large screens so the crop keeps the harbour and harbour bus in view.
+  membership: m("dsc08126", "En gæst med saunahat ser ud over havnen og en gul havnebus", "A guest in a sauna hat looking out over the harbour and a yellow harbour bus", "60% 50%"),
   locations: {
     refshaleoen: m("dsc08017", "En liggestol i træ på dækket ud mod havnen", "A wooden lounger on the deck facing the harbour", "45% 60%"),
     // No photograph of Havnegade exists yet; the component renders a neutral placeholder.

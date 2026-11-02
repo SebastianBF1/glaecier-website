@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
   // /da/ → da/index.html, which GitHub Pages serves without extra config.
   trailingSlash: true,
   env: { NEXT_PUBLIC_BASE_PATH: basePath },
+  // The dev-only Next.js badge sat on top of the hero's secondary CTA on phones (never shown in production).
+  devIndicators: false,
   images: {
     loader: "custom",
     loaderFile: "./src/lib/image-loader.ts",

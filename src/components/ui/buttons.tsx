@@ -13,7 +13,7 @@ const variants = {
 export type ButtonVariant = keyof typeof variants;
 
 export const buttonClass = (variant: ButtonVariant, extra = "") =>
-  `inline-flex items-center justify-center gap-2.5 whitespace-nowrap text-[0.75rem] font-medium uppercase tracking-[0.16em] transition-[color,background-color,border-color,background-size] duration-500 ease-calm ${variants[variant]} ${extra}`;
+  `inline-flex items-center justify-center gap-2.5 whitespace-nowrap text-[0.75rem] font-medium uppercase tracking-[0.16em] transition-[color,background-color,border-color,background-size,scale] duration-500 ease-calm active:scale-[0.985] motion-reduce:active:scale-100 ${variants[variant]} ${extra}`;
 
 /** Link into one of GLAECIER's official systems (see src/content/links.ts). Opens in a new tab. */
 export function ExternalAction({

@@ -13,6 +13,7 @@ export function HeroSwitcher<K extends string>({
   variants: Record<K, ReactNode>;
 }) {
   const [variant, setVariant] = useState<K>(initial);
+  const [open, setOpen] = useState(false);
   const keys = Object.keys(variants) as K[];
 
   useEffect(() => {
@@ -25,6 +26,7 @@ export function HeroSwitcher<K extends string>({
 
   const choose = (v: K) => {
     setVariant(v);
+    setOpen(false);
     const url = new URL(window.location.href);
     url.searchParams.set("hero", v);
     window.history.replaceState(null, "", url);
@@ -34,13 +36,16 @@ export function HeroSwitcher<K extends string>({
     <>
       {/* Keyed so <picture>/<video> remount: browsers don't re-pick media when only <source> srcsets change. */}
       <Fragment key={variant}>{variants[variant]}</Fragment>
+      {/* Collapsed to a small pill by default so it never covers the page's own controls. */}
       <div
         role="group"
         aria-label={labels.label}
-        className="fixed right-4 bottom-4 z-50 flex items-center gap-1 rounded-full bg-ink/85 p-1 text-[0.6875rem] text-paper shadow-lg backdrop-blur"
+        className="fixed right-3 bottom-3 z-50 flex items-center gap-1 rounded-full bg-ink/85 p-1 text-[0.6875rem] text-paper shadow-lg backdrop-blur"
       >
-        <span className="px-3 opacity-70">DEV</span>
-        {keys.map((v) => (
+        <button type="button" aria-expanded={open} onClick={() => setOpen((o) => !o)} className="rounded-full px-3 py-1.5 opacity-80">
+          DEV · {labels[variant]}
+        </button>
+        {open && keys.map((v) => (
           <button
             key={v}
             type="button"

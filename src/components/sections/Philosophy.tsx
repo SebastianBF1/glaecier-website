@@ -1,6 +1,8 @@
 import type { Dictionary } from "@/content/dictionaries";
 import { media } from "@/content/media";
 import type { Locale } from "@/i18n/config";
+import { links } from "@/content/links";
+import { buttonClass, ExternalAction } from "@/components/ui/buttons";
 import { Photo } from "@/components/ui/Photo";
 
 /**
@@ -23,6 +25,15 @@ export function Philosophy({ t, locale }: { t: Dictionary; locale: Locale }) {
           {t.philosophy.statement}
         </h2>
         <p className="reveal mt-10 max-w-xl text-lg leading-relaxed text-paper/85">{t.philosophy.body}</p>
+        {/* A quiet invitation to close the story: the two ways in. */}
+        <div className="reveal mt-14 flex flex-col items-center gap-5 sm:flex-row sm:gap-8">
+          <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="solid">
+            {t.hero.secondary}
+          </ExternalAction>
+          <a href="#membership" className={buttonClass("text")}>
+            {t.hero.video.membership}
+          </a>
+        </div>
       </div>
     </section>
   );

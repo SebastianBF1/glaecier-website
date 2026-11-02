@@ -152,6 +152,10 @@
   .hero-reveal {
     animation: rise 1.1s var(--d, 0.3s) var(--ease-calm) both;
   }
+  /* The clip's pane slides open from the mullion once, after the room has faded up. */
+  .hero-window-open {
+    animation: window-open 1.6s 0.5s var(--ease-calm) both;
+  }
   .scroll-line {
     animation: scroll-cue 2.6s var(--ease-calm) infinite;
   }
@@ -191,6 +195,14 @@
 @keyframes unveil {
   from {
     clip-path: inset(10% 6% 0 6%);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes window-open {
+  from {
+    clip-path: inset(0 100% 0 0);
   }
   to {
     clip-path: inset(0);

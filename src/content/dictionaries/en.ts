@@ -72,9 +72,9 @@ export const en: Dictionary = {
     heading: "Heat, scent and steam",
     lead: "Water and essential oils over hot stones, three rounds in the sauna and a dip in the pool in between.",
     featured: [
-      { title: "Open Gus", meta: "For non-members · Tuesday evenings" },
-      { title: "Member Gus", meta: "By members, for members" },
-      { title: "Special experiences", meta: "Member events and courses – details to follow" },
+      { title: "Open Gus", access: "Bookable by everyone", meta: "Tuesday evenings · three rounds with a gusmaster", action: "Book Open Gus" },
+      { title: "Member Gus", access: "Members only", meta: "By members, for members · booked in the app", action: "About membership" },
+      { title: "Special experiences", access: "Upcoming", meta: "Member events and courses – details to follow", action: "" },
     ],
     cta: "Book Open Gus",
     details: {
@@ -103,7 +103,7 @@ export const en: Dictionary = {
   membership: {
     eyebrow: "Membership",
     heading: "A community on the water",
-    intro: "A private members’ club. Come when it suits you – up to 10 times a month.",
+    intro: "A private members’ club on the water – come whenever it suits you.",
     paths: [
       {
         label: "Refshaleøen",
@@ -158,9 +158,9 @@ export const en: Dictionary = {
     heading: "Gather your people on the water",
     lead: "For selected occasions, we open Glaecier to private groups, companies and brands. Thursday evenings are the natural choice.",
     items: [
-      { id: "private-hire", title: "Private Hire", body: "Sauna and bathing for your own guests – at Glaecier’s calm pace." },
-      { id: "corporate-events", title: "Corporate Events", body: "Heat, cold and time together by the harbour – a calm alternative to the meeting room." },
-      { id: "brand-activations", title: "Brand Activations", body: "Partnerships with brands that share our values of calm, health and community." },
+      { id: "private-hire", audience: "For private groups", title: "Private Hire", body: "Sauna and bathing for your own guests – at Glaecier’s calm pace." },
+      { id: "corporate-events", audience: "For companies", title: "Corporate Events", body: "Heat, cold and time together by the harbour – a calm alternative to the meeting room." },
+      { id: "brand-activations", audience: "For brands", title: "Brand Activations", body: "Partnerships with brands that share our values of calm, health and community." },
     ],
     cta: "Send an enquiry",
     details: {

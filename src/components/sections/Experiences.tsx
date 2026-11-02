@@ -2,7 +2,7 @@ import type { Dictionary } from "@/content/dictionaries";
 import { media } from "@/content/media";
 import type { Locale } from "@/i18n/config";
 import { links } from "@/content/links";
-import { ExternalAction } from "@/components/ui/buttons";
+import { buttonClass, ExternalAction } from "@/components/ui/buttons";
 import { Photo } from "@/components/ui/Photo";
 import { SectionIntro } from "@/components/ui/SectionIntro";
 
@@ -41,8 +41,20 @@ export function Experiences({ t, locale }: { t: Dictionary; locale: Locale }) {
               className={frames[i]}
               imgClassName="transition-transform duration-[1.2s] ease-calm group-hover:scale-[1.04]"
             />
-            <h3 className="mt-6 font-serif text-2xl font-light md:text-3xl">{item.title}</h3>
-            <p className="eyebrow mt-3 text-wood">{item.meta}</p>
+            {/* Who it is for comes first, so public vs. members-only is clear at a glance. */}
+            <p className="eyebrow mt-6 text-wood">{item.access}</p>
+            <h3 className="mt-2 font-serif text-2xl font-light md:text-3xl">{item.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-stone">{item.meta}</p>
+            {i === 0 && (
+              <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="text" className="mt-4">
+                {item.action}
+              </ExternalAction>
+            )}
+            {i === 1 && (
+              <a href="#membership" className={buttonClass("text", "mt-4")}>
+                {item.action}
+              </a>
+            )}
           </li>
         ))}
       </ul>

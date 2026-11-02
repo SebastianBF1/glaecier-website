@@ -38,9 +38,10 @@ export function PrivateHire({ t, locale }: { t: Dictionary; locale: Locale }) {
           <ol className="mt-14 border-t border-ink/15">
             {t.hire.items.map((item, i) => (
               <li key={item.id} id={item.id} className="reveal grid scroll-mt-32 grid-cols-[2.75rem_1fr] border-b border-ink/15 py-8 md:py-10">
-                <span className="eyebrow pt-3 text-wood">0{i + 1}</span>
+                <span className="eyebrow pt-1 text-wood">0{i + 1}</span>
                 <div>
-                  <h3 className="font-serif text-3xl font-light md:text-4xl">{item.title}</h3>
+                  <p className="eyebrow text-stone">{item.audience}</p>
+                  <h3 className="mt-2 font-serif text-3xl font-light md:text-4xl">{item.title}</h3>
                   <p className="mt-3 max-w-md leading-relaxed text-stone">{item.body}</p>
                 </div>
               </li>

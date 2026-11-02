@@ -87,11 +87,11 @@ export const da = {
     lead: "Vand med æteriske olier over de varme sten, tre runder i saunaen og et dyp i poolen imellem.",
     featured: [
       // VERIFIED
-      { title: "Open Gus", meta: "For gæster uden medlemskab · tirsdag aften" },
+      { title: "Open Gus", access: "Kan bookes af alle", meta: "Tirsdag aften · tre runder med en gusmester", action: "Book Open Gus" },
       // VERIFIED
-      { title: "Member Gus", meta: "Af medlemmer, for medlemmer" },
+      { title: "Member Gus", access: "Kun for medlemmer", meta: "Af medlemmer, for medlemmer · bookes i appen", action: "Om medlemskab" },
       // VERIFIED (member events) + UNVERIFIED (courses: only source is the Gusmaster-course poster)
-      { title: "Særlige oplevelser", meta: "Medlemsevents og kurser – detaljer følger" },
+      { title: "Særlige oplevelser", access: "Kommende", meta: "Medlemsevents og kurser – detaljer følger", action: "" },
     ],
     cta: "Book Open Gus",
     details: {
@@ -126,7 +126,7 @@ export const da = {
     eyebrow: "Medlemskab",
     heading: "Et fællesskab på vandet", // DRAFT
     // VERIFIED (condensed)
-    intro: "En privat medlemsklub. Kom, når det passer dig – op til 10 gange om måneden.",
+    intro: "En privat medlemsklub på vandet – kom, når det passer dig.", // DRAFT (facts listed separately)
     paths: [
       // VERIFIED (signup-refshaleoen + FAQ): random invitations, explicitly not a waiting list.
       {
@@ -189,11 +189,11 @@ export const da = {
     lead: "Til udvalgte arrangementer åbner vi Glaecier for private selskaber, virksomheder og brands. Torsdag aften er det oplagte tidspunkt.",
     items: [
       // VERIFIED intent (FAQ); DRAFT phrasing
-      { id: "private-hire", title: "Privat leje", body: "Sauna og bad for jeres egne gæster – i Glaeciers rolige tempo." },
+      { id: "private-hire", audience: "For private selskaber", title: "Privat leje", body: "Sauna og bad for jeres egne gæster – i Glaeciers rolige tempo." },
       // DRAFT – corporate offer not described on the live site
-      { id: "corporate-events", title: "Firmaarrangementer", body: "Varme, kulde og tid sammen ved havnen – et roligt alternativ til mødelokalet." },
+      { id: "corporate-events", audience: "For virksomheder", title: "Firmaarrangementer", body: "Varme, kulde og tid sammen ved havnen – et roligt alternativ til mødelokalet." },
       // DRAFT / UNVERIFIED – brand activations are not mentioned on the live site
-      { id: "brand-activations", title: "Brand-aktiveringer", body: "Samarbejder med brands, der deler vores værdier om ro, sundhed og fællesskab." },
+      { id: "brand-activations", audience: "For brands", title: "Brand-aktiveringer", body: "Samarbejder med brands, der deler vores værdier om ro, sundhed og fællesskab." },
     ],
     cta: "Send en forespørgsel",
     details: {

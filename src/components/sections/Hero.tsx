@@ -122,29 +122,33 @@ function HeroVideo({ t }: Props) {
         <source media="(orientation: landscape) and (min-width: 768px)" srcSet={backdropSet} sizes="(min-width: 1650px) 134vw, 156vw" />
         <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" className="h-full w-full object-cover" />
       </picture>
-      {/* The clip, standing in the window opening; a slim dark mullion on its left ties it to the glazing. */}
-      <div className="hero-panel hero-fade -z-10 hidden overflow-hidden border-l-[0.375rem] border-ink md:landscape:block">
+      {/* The clip, standing in the window opening. A slim dark mullion on its left and a soft inner shadow (like the
+          reveal of a deep window frame) tie it to the glazing; on load it opens from the mullion like a sliding pane. */}
+      <div className="hero-panel hero-window-open -z-10 hidden overflow-hidden border-l-[0.375rem] border-ink md:landscape:block">
         <AmbientVideo className="h-full w-full object-cover" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 shadow-[inset_0_0_70px_rgb(0_0_0/0.35)]" />
       </div>
-      {/* Scrims only where text sits: the header band and the copy area. */}
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-48 bg-gradient-to-b from-ink/55 to-transparent" />
+      {/* Scrims only where text sits: the header band and the copy area. Landscape needs little – the copy sits on
+          the photo's own dark wall. Portrait: a long, multi-stop fade from the clip into the copy band. */}
+      <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-ink/50 to-transparent" />
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-gradient-to-t from-ink from-[16%] via-ink/75 via-[33%] to-transparent to-[58%] md:landscape:bg-gradient-to-r md:landscape:from-ink/80 md:landscape:from-0% md:landscape:via-ink/40 md:landscape:via-[30%] md:landscape:to-transparent md:landscape:to-[55%]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,var(--color-ink)_0%,var(--color-ink)_15%,rgb(28_27_25/0.86)_27%,rgb(28_27_25/0.45)_42%,rgb(28_27_25/0.12)_54%,transparent_64%)] md:landscape:bg-gradient-to-r md:landscape:from-ink/55 md:landscape:from-0% md:landscape:via-ink/20 md:landscape:via-[28%] md:landscape:to-transparent md:landscape:to-[48%]"
       />
 
-      <div className="hero-copy-pos container-page pb-10 sm:pb-14 md:landscape:pb-0">
-        <div className="hero-reveal w-[min(58vw,24rem)] md:landscape:w-[min(38vw,36rem)]" style={reveal(0)}>
+      <div className="hero-copy-pos container-page pb-[max(2.25rem,calc(env(safe-area-inset-bottom)+1.5rem))] sm:pb-14 md:landscape:pb-0">
+        <div className="hero-reveal w-[min(62vw,24rem)] md:landscape:w-[min(38vw,36rem)]" style={reveal(0)}>
           <Title />
         </div>
-        <p className="hero-reveal mt-5 font-serif text-[1.625rem] leading-tight font-light text-balance md:mt-7 md:text-4xl" style={reveal(1)}>
+        <p className="hero-reveal mt-6 font-serif text-[1.75rem] leading-[1.15] font-light text-balance md:mt-7 md:text-4xl" style={reveal(1)}>
           {v.title}
         </p>
-        <p className="hero-reveal mt-2 max-w-xs text-[0.9375rem] leading-relaxed text-paper/80 md:max-w-sm md:text-lg" style={reveal(2)}>
+        <p className="hero-reveal mt-2 max-w-xs text-sm leading-relaxed text-paper/70 md:max-w-sm md:text-lg md:text-paper/80" style={reveal(2)}>
           {v.sub}
         </p>
-        <div className="hero-reveal mt-7 flex flex-wrap items-center gap-x-7 gap-y-4 md:mt-9 md:gap-x-3" style={reveal(3)}>
-          <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="solid">
+        <div className="hero-reveal mt-8 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-x-7 md:mt-9 md:gap-x-3" style={reveal(3)}>
+          {/* Full-width primary action on phones: the strongest element after the wordmark. */}
+          <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="solid" className="max-sm:w-full">
             {t.hero.secondary}
           </ExternalAction>
           {/* Text link on phones (keeps the first screen compact), outlined button from md up. */}

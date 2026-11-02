@@ -734,6 +734,19 @@
     "hash": "1001110000111000001111001100100110111011110111111100111101001110",
     "duplicateGroup": 14
   },
+  "solnedgang-over-havnen": {
+    "file": "Solnedgang over havnen.webp",
+    "slug": "solnedgang-over-havnen",
+    "src": "/media/solnedgang-over-havnen.jpg",
+    "width": 1152,
+    "height": 1536,
+    "originalWidth": 1152,
+    "originalHeight": 1536,
+    "orientation": "portrait",
+    "bytes": 275952,
+    "hasExif": false,
+    "hash": "1110011011100110011010010010000100100001001011010000000000000000"
+  },
   "whatsapp-image-2026-10-06-at-12-22-48": {
     "file": "WhatsApp Image 2026-10-06 at 12.22.48.jpeg",
     "slug": "whatsapp-image-2026-10-06-at-12-22-48",

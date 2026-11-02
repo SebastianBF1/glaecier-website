@@ -45,7 +45,11 @@ export const media = {
     },
   },
   // A quiet human moment straight after the hero: a guest by the window, seen through glass and reflections.
-  intro: m("dsc07653", "En gæst ved vinduet, set gennem glas og spejlinger", "A guest by the window, seen through glass and reflections", "42% 45%"),
+  intro: m(
+    "solnedgang-over-havnen",
+    "Solnedgang over havnen, set fra det våde trædæk med badestiger og pool",
+    "Sunset over the harbour, seen from the wet timber deck with swim ladders and pool",
+  ),
   // All supplied photos, including those showing people, are approved for publication (client, 2026-10-30).
   // Changing a slug here also means updating the public/media allow-list in .gitignore (`npm run check:export` catches misses).
   facilities: {

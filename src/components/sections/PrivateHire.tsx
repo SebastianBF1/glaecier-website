@@ -6,8 +6,8 @@ import { buttonClass } from "@/components/ui/buttons";
 import { Photo } from "@/components/ui/Photo";
 
 /**
- * Hospitality rather than conference venue: a full-screen low-lit lounge, then a split with one warm, tall image
- * (sticky on large screens) beside a serif lead, the three offerings as a numbered list and the enquiry CTA.
+ * Hospitality rather than conference venue: a full-screen low-lit lounge, then a split with two event photos beside a
+ * serif lead, the three offerings as a numbered list and the enquiry CTA.
  */
 export function PrivateHire({ t, locale }: { t: Dictionary; locale: Locale }) {
   return (
@@ -24,13 +24,11 @@ export function PrivateHire({ t, locale }: { t: Dictionary; locale: Locale }) {
       </div>
 
       <div className="container-page mt-20 grid gap-y-14 md:mt-32 lg:grid-cols-12 lg:gap-x-10">
-        <Photo
-          item={media.hire.detail}
-          locale={locale}
-          sizes="(min-width: 1024px) 40vw, 80vw"
-          effect="reveal"
-          className="aspect-[4/5] w-4/5 lg:sticky lg:top-32 lg:col-span-5 lg:w-full lg:self-start"
-        />
+        {/* Two event photos, offset like a contact sheet: guests between rounds, then the welcome sign. */}
+        <div className="flex flex-col gap-6 lg:col-span-5 lg:gap-10">
+          <Photo item={media.hire.guests} locale={locale} sizes="(min-width: 1024px) 40vw, 80vw" effect="reveal" className="aspect-[4/5] w-4/5 lg:w-full" />
+          <Photo item={media.hire.event} locale={locale} sizes="(min-width: 1024px) 26vw, 60vw" effect="reveal" className="aspect-[2/3] w-3/5 self-end lg:w-2/3" />
+        </div>
 
         <div className="lg:col-span-6 lg:col-start-7 lg:pt-6">
           <p className="reveal max-w-xl font-serif text-2xl leading-snug font-light text-ink md:text-3xl">{t.hire.lead}</p>

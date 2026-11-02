@@ -679,6 +679,32 @@
     "hash": "1100000011111000011100010110001111001110000011000010011001011000",
     "duplicateGroup": 13
   },
+  "event-gaester-i-haandklaeder": {
+    "file": "Event gaester i haandklaeder.webp",
+    "slug": "event-gaester-i-haandklaeder",
+    "src": "/media/event-gaester-i-haandklaeder.jpg",
+    "width": 1183,
+    "height": 1435,
+    "originalWidth": 1183,
+    "originalHeight": 1435,
+    "orientation": "portrait",
+    "bytes": 230520,
+    "hasExif": false,
+    "hash": "0000010101000011000010010000100100100101001011010010110100011111"
+  },
+  "event-velkomst-paa-daekket": {
+    "file": "Event velkomst paa daekket.webp",
+    "slug": "event-velkomst-paa-daekket",
+    "src": "/media/event-velkomst-paa-daekket.jpg",
+    "width": 1047,
+    "height": 1584,
+    "originalWidth": 1047,
+    "originalHeight": 1584,
+    "orientation": "portrait",
+    "bytes": 154428,
+    "hasExif": false,
+    "hash": "0111111101011011110110110101100001011000111100101010001010100110"
+  },
   "pool": {
     "file": "Pool.jpg",
     "slug": "pool",

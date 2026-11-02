@@ -56,6 +56,38 @@
     text-transform: uppercase;
     font-weight: 500;
   }
+  /* Video hero, landscape screens: one coordinate system for the window photo, the clip and the copy (Hero.tsx).
+     Backdrop DSC07767 is 3:2; its window opening spans x 29.7–75.8 % and y 26.9–72.6 % (height 45.7 %, centre 49.75 %). */
+  @media (orientation: landscape) and (width >= 48rem) {
+    .hero-stage {
+      --z: 1.55;
+      /* Backdrop width: covers the screen at zoom z, capped so the window opening fits below the header. */
+      --w: min(calc(max(100vw, 150svh) * var(--z)), calc((100svh - 12rem) / 0.3047));
+      --h: calc(var(--w) / 1.5);
+      --cy: calc(50svh + 2.5rem); /* window centre, nudged down to clear the header */
+      @media (width >= 1650px) {
+        --z: 1.333; /* keeps the 2560px backdrop file at ≤1:1 on wide screens */
+      }
+    }
+    .hero-backdrop {
+      position: absolute;
+      left: 0;
+      width: var(--w);
+      height: var(--h);
+      top: calc(var(--cy) - var(--h) * 0.4975);
+    }
+    .hero-panel {
+      position: absolute;
+      aspect-ratio: 464 / 832;
+      height: calc(var(--h) * 0.457);
+      top: calc(var(--cy) - var(--h) * 0.2285);
+      right: max(6vw, calc((100vw - 1440px) / 2 + 2.5rem));
+    }
+    /* Copy baseline = window sill (margin, so the element's own padding utilities don't fight it). */
+    .hero-copy-pos {
+      margin-bottom: calc(100svh - var(--cy) - var(--h) * 0.2285);
+    }
+  }
   /* Hero scroll cue: a hairline with a short segment that drifts down (static under reduced motion). */
   .scroll-line {
     display: block;
@@ -113,6 +145,13 @@
   .hero-copy {
     animation: rise 1.4s 0.3s var(--ease-calm) both;
   }
+  /* Video hero entrance: imagery fades up from dark, copy follows line by line. No zoom, nothing blocks interaction. */
+  .hero-fade {
+    animation: fade 1.8s var(--ease-calm) both;
+  }
+  .hero-reveal {
+    animation: rise 1.1s var(--d, 0.3s) var(--ease-calm) both;
+  }
   .scroll-line {
     animation: scroll-cue 2.6s var(--ease-calm) infinite;
   }
@@ -155,6 +194,11 @@
   }
   to {
     clip-path: inset(0);
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
   }
 }
 @keyframes scroll-cue {

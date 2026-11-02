@@ -99,54 +99,56 @@ function HeroNordic({ t, locale }: Props) {
 
 /**
  * Video hero – an evolution of Hero B. The only footage is a 464×832 portrait clip, so it is never stretched.
- * Portrait screens: the clip fills the upper part and fades into a dark band that carries the copy, which keeps the
+ * Landscape screens: one coordinate system (.hero-stage in globals.css) places a sharp photograph of a dark room
+ * with a window onto the harbour, sizes the clip to exactly the height of that window opening and stands it inside
+ * it, and aligns the copy's baseline with the window sill – so the clip reads as part of the view, not an inset.
+ * The clip is shown at ≤1:1 (0.7–0.95× of native) and the photo at ≤1:1 of its 2560px file.
+ * Portrait screens: the clip fills the upper part and fades into a dark band that carries the copy, keeping the
  * baked-in "quietude" (mid-height in the clip) well clear of the wordmark.
- * Landscape screens: the clip plays sharp in a framed panel (never upscaled beyond ~1.05×) against a sharp, dark
- * photograph of a window onto the harbour, with the copy on the left.
  */
 function HeroVideo({ t }: Props) {
   const v = t.hero.video;
-  const backdrop = media.heroVideoBackdrop;
-  const b = getMedia(backdrop);
-  const { props: { srcSet: backdropSet } } = getImageProps({ src: b.src, width: b.width, height: b.height, alt: "", sizes: "135vw" });
+  const b = getMedia(media.heroVideoBackdrop);
+  const { props: { srcSet: backdropSet } } = getImageProps({ src: b.src, width: b.width, height: b.height, alt: "", sizes: "(min-width: 1650px) 134vw, 156vw" });
+  const reveal = (step: number) => ({ "--d": `${0.25 + step * 0.12}s` }) as CSSProperties;
   return (
-    <section aria-labelledby="hero-title" className="relative isolate flex h-svh min-h-[36rem] items-end overflow-hidden bg-ink text-paper">
-      {/* Portrait: full-width clip. Hidden (and never loaded or played) on landscape screens. */}
-      <AmbientVideo className="absolute inset-x-0 top-0 -z-10 h-[86%] w-full object-cover md:landscape:hidden" />
-      {/* Landscape: decorative backdrop. Only the landscape <source> carries the photo, so portrait screens get the
-          1px placeholder and never download it (a hidden <img> alone would still be fetched). Enlarged from the left
-          edge so the bright window sits behind the video panel and the copy rests on the dark interior wall. */}
-      <picture className="absolute inset-0 -z-10 hidden overflow-hidden md:landscape:block">
-        <source media="(orientation: landscape) and (min-width: 768px)" srcSet={backdropSet} sizes="135vw" />
-        <img
-          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-          alt=""
-          className="h-full w-full origin-left scale-[1.35] object-cover"
-          style={{ objectPosition: backdrop.position }}
-        />
+    <section aria-labelledby="hero-title" className="hero-stage relative isolate flex h-svh min-h-[34rem] items-end overflow-hidden bg-ink text-paper">
+      {/* Portrait: full-width clip fading into the copy band. Hidden (never loaded or played) on landscape screens. */}
+      {/* On short phones the clip is cropped from the top (object-bottom), lifting "quietude" away from the logo. */}
+      <AmbientVideo className="hero-fade absolute inset-x-0 top-0 -z-10 h-[86%] w-full object-cover [@media(max-height:700px)]:h-[78%] [@media(max-height:700px)]:object-bottom md:landscape:hidden" />
+      {/* Landscape backdrop. Only the landscape <source> carries the photo, so portrait screens get the 1px
+          placeholder and never download it (a hidden <img> alone would still be fetched). */}
+      <picture className="hero-backdrop hero-fade -z-10 hidden md:landscape:block">
+        <source media="(orientation: landscape) and (min-width: 768px)" srcSet={backdropSet} sizes="(min-width: 1650px) 134vw, 156vw" />
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" className="h-full w-full object-cover" />
       </picture>
-      {/* Right edge follows the page grid on wide screens (1440px container + 2.5rem padding). */}
-      <div className="absolute right-[max(6vw,calc((100vw-1440px)/2+2.5rem))] bottom-[7svh] -z-10 hidden aspect-[464/832] h-[78svh] max-h-[52rem] overflow-hidden shadow-[0_40px_90px_-40px_rgb(0_0_0/0.8)] ring-1 ring-paper/15 md:landscape:block">
+      {/* The clip, standing in the window opening; a slim dark mullion on its left ties it to the glazing. */}
+      <div className="hero-panel hero-fade -z-10 hidden overflow-hidden border-l-[0.375rem] border-ink md:landscape:block">
         <AmbientVideo className="h-full w-full object-cover" />
       </div>
       {/* Scrims only where text sits: the header band and the copy area. */}
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-48 bg-gradient-to-b from-ink/50 to-transparent" />
+      <div aria-hidden="true" className="absolute inset-x-0 top-0 -z-10 h-48 bg-gradient-to-b from-ink/55 to-transparent" />
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-gradient-to-t from-ink from-15% via-ink/70 via-35% to-transparent to-60% md:landscape:bg-gradient-to-r md:landscape:from-ink/70 md:landscape:from-0% md:landscape:via-ink/35 md:landscape:via-45% md:landscape:to-ink/20 md:landscape:to-100%"
+        className="absolute inset-0 -z-10 bg-gradient-to-t from-ink from-[16%] via-ink/75 via-[33%] to-transparent to-[58%] md:landscape:bg-gradient-to-r md:landscape:from-ink/80 md:landscape:from-0% md:landscape:via-ink/40 md:landscape:via-[30%] md:landscape:to-transparent md:landscape:to-[55%]"
       />
 
-      <div className="hero-copy container-page pb-12 md:pb-20">
-        <div className="w-[min(68vw,30rem)] md:landscape:w-[min(42vw,40rem)]">
+      <div className="hero-copy-pos container-page pb-10 sm:pb-14 md:landscape:pb-0">
+        <div className="hero-reveal w-[min(58vw,24rem)] md:landscape:w-[min(38vw,36rem)]" style={reveal(0)}>
           <Title />
         </div>
-        <p className="mt-6 font-serif text-[1.75rem] leading-tight font-light md:text-4xl">{v.title}</p>
-        <p className="mt-2 text-paper/85 md:text-lg">{v.sub}</p>
-        <div className="mt-8 flex flex-wrap gap-3">
+        <p className="hero-reveal mt-5 font-serif text-[1.625rem] leading-tight font-light text-balance md:mt-7 md:text-4xl" style={reveal(1)}>
+          {v.title}
+        </p>
+        <p className="hero-reveal mt-2 max-w-xs text-[0.9375rem] leading-relaxed text-paper/80 md:max-w-sm md:text-lg" style={reveal(2)}>
+          {v.sub}
+        </p>
+        <div className="hero-reveal mt-7 flex flex-wrap items-center gap-x-7 gap-y-4 md:mt-9 md:gap-x-3" style={reveal(3)}>
           <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="solid">
             {t.hero.secondary}
           </ExternalAction>
-          <a href="#membership" className={buttonClass("outline")}>
+          {/* Text link on phones (keeps the first screen compact), outlined button from md up. */}
+          <a href="#membership" className={buttonClass("text", "md:border md:border-current/60 md:bg-none md:px-7 md:py-4 md:hover:border-current md:hover:bg-paper/10")}>
             {v.membership}
           </a>
         </div>
@@ -154,7 +156,7 @@ function HeroVideo({ t }: Props) {
 
       <a
         href="#intro-title"
-        className="eyebrow absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 text-[0.625rem] text-paper/75 transition-colors hover:text-paper md:flex"
+        className="eyebrow absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 text-[0.625rem] text-paper/75 transition-colors hover:text-paper md:flex md:landscape:hidden"
       >
         {v.scroll}
         <span aria-hidden="true" className="scroll-line" />

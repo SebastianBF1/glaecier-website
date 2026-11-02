@@ -118,7 +118,8 @@ export function SiteHeader({ t, locale }: { t: HeaderText; locale: Locale }) {
       }`}
     >
       <p className={`px-5 py-1 text-center text-[0.6875rem] tracking-wide transition-colors duration-700 ${solid ? "bg-sand/80" : "bg-ink/40"}`}>
-        {t.prototype.banner}
+        <span className="sm:hidden">{t.prototype.bannerShort}</span>
+        <span className="max-sm:hidden">{t.prototype.banner}</span>
       </p>
 
       <div className="container-page relative flex h-16 items-center gap-4 lg:h-20">

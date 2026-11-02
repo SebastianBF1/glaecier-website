@@ -15,6 +15,7 @@ export const da = {
   },
   prototype: {
     banner: "Forhåndsvisning af ny hjemmeside – booking og login foregår på glaecier.com.",
+    bannerShort: "Forhåndsvisning · booking og login via glaecier.com",
   },
   nav: {
     label: "Hovedmenu",

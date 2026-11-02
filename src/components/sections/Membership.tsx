@@ -23,26 +23,27 @@ export function Membership({ t, locale }: { t: Dictionary; locale: Locale }) {
           <SectionIntro eyebrow={t.membership.eyebrow} heading={t.membership.heading} headingId="membership-title" className="text-fog [&_h2]:text-paper" />
           <p className="reveal mt-6 max-w-md text-lg leading-relaxed text-paper/85">{t.membership.intro}</p>
 
-          <div className="mt-16 grid gap-12 2xl:grid-cols-2 2xl:gap-10">
+          {/* Two clearly different paths: the open club (primary, on the dark ground) and the upcoming Havnegade
+              pre-registration (secondary, set apart in a harbour-blue panel that echoes its Locations card). */}
+          <div className="mt-16 grid gap-10 2xl:grid-cols-2 2xl:items-start">
             <div className="reveal border-t border-paper/25 pt-7">
               <p className="eyebrow text-fog">{lobby.label}</p>
-              <h3 className="mt-3 font-serif text-3xl font-light">{lobby.title}</h3>
+              <h3 className="mt-3 font-serif text-3xl font-light md:text-[2.125rem]">{lobby.title}</h3>
               <p className="mt-4 max-w-sm leading-relaxed text-paper/80">{lobby.body}</p>
               <ExternalAction href={links.signupRefshaleoen} newTab={t.nav.newTab} variant="solid" className="mt-8">
                 {lobby.cta}
               </ExternalAction>
+              <p className="mt-6 text-sm text-fog">{t.membership.price}</p>
             </div>
-            <div className="reveal border-t border-paper/25 pt-7">
+            <div className="reveal bg-harbour/70 p-7">
               <p className="eyebrow text-fog">{havnegade.label}</p>
-              <h3 className="mt-3 font-serif text-3xl font-light">{havnegade.title}</h3>
+              <h3 className="mt-3 font-serif text-[1.75rem] font-light">{havnegade.title}</h3>
               <p className="mt-4 max-w-sm leading-relaxed text-paper/80">{havnegade.body}</p>
-              <ExternalAction href={links.signupHavnegade} newTab={t.nav.newTab} variant="text" className="mt-8">
+              <ExternalAction href={links.signupHavnegade} newTab={t.nav.newTab} variant="text" className="mt-6">
                 {havnegade.cta}
               </ExternalAction>
             </div>
           </div>
-
-          <p className="reveal mt-14 text-sm text-fog">{t.membership.price}</p>
         </div>
       </div>
     </section>

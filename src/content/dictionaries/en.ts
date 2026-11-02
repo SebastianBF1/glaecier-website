@@ -9,6 +9,7 @@ export const en: Dictionary = {
   },
   prototype: {
     banner: "Preview of the new website – booking and login take place on glaecier.com.",
+    bannerShort: "Preview · booking and login via glaecier.com",
   },
   nav: {
     label: "Main menu",

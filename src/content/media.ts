@@ -52,6 +52,8 @@ export const media = {
   facilities: {
     sauna: m("dsc07850", "Panorama-saunaen med træbænke, sten og vinduer mod havnen", "The panorama sauna with timber benches, stones and windows to the harbour", "50% 55%"),
     pool: m("dsc07890", "Poolen med trappe og gelænder under dækkets pergola", "The pool with steps and handrail beneath the deck pergola", "50% 75%"),
+    // Small water detail set against the pool frame.
+    detail: m("dsc07504", "Poolens mosaikfliser under vandet", "The pool's mosaic tiles under the water", "40% 50%"),
     deck: m("dsc07963", "Dækket med liggestole og en glaspavillon ud mod vandet", "The deck with loungers and a glazed pavilion facing the water", "62% 50%"),
   },
   experiences: {
@@ -60,7 +62,7 @@ export const media = {
     featured: [
       m("dsc07593", "En gæst i saunaen ser ud over havnen", "A guest in the sauna looking out over the harbour", "50% 40%"),
       m("dsc08152", "Gæster i saunaen, set gennem grønne blade", "Guests in the sauna, seen through green leaves", "55% 50%"),
-      m("dsc07838", "Saunasten og spand til gus", "Sauna stones and a bucket for gus", "50% 50%"),
+      m("dsc08088", "En gæst hviler mellem runderne", "A guest resting between rounds", "56% 50%"),
     ],
   },
   membership: m("dsc08126", "En gæst med saunahat ser ud over havnen og en gul havnebus", "A guest in a sauna hat looking out over the harbour and a yellow harbour bus", "64% 45%"),
@@ -70,14 +72,10 @@ export const media = {
   },
   hire: {
     main: m("dsc07799", "Varme pendellamper i loungen", "Warm pendant lamps in the lounge", "50% 40%"),
-    // Order matches hire.items in the dictionaries.
-    items: [
-      m("dsc07600", "Pergolaen og disken på dækket", "The pergola and counter on the deck", "50% 60%"),
-      m("dsc08000", "Palmer og udsigt mod poolen", "Palms and a view towards the pool", "35% 50%"),
-      m("dsc07737", "Badedragt med Glaecier-logo på bøjle", "Glaecier-branded swimwear on a hanger", "50% 40%"),
-    ],
+    detail: m("dsc07769", "Blomster og varmt lys ved receptionen", "Flowers and warm light at reception", "42% 50%"),
   },
-  philosophy: m("dsc07782", "Stearinlys og duftpinde i vindueskarmen", "Candles and a reed diffuser on the windowsill", "50% 55%"),
+  // Holmen harbour – the setting of Copenhagen's bathing tradition – opening the harbour-blue Our Story section.
+  philosophy: m("dsc08007", "Poolen og havnen ved Holmen med Dannebrog", "The pool and the harbour at Holmen with the Danish flag", "50% 45%"),
   og: m("dsc07485", "Glaecier ved Refshaleøen", "Glaecier at Refshaleøen"),
 };
 

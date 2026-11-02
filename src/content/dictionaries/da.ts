@@ -216,7 +216,144 @@ export const da = {
       "Glaecier er et stille sted. Sauna og badning er rolige aktiviteter, og vi udvikler stedet i dialog med vores naboer.",
     ],
   },
+  // Book Open Gus page (/book/). Live dates, gusmasters and seats stay in the official calendar (no public API).
+  book: {
+    meta: {
+      title: "Book Open Gus – Glaecier",
+      description: "Open Gus er for alle – også uden medlemskab. En guidet saunagus med tre runder, dyp i poolen og en let forfriskning på Refshaleøen.",
+    },
+    eyebrow: "Open Gus · Refshaleøen",
+    title: "Din næste pause begynder her.", // client-provided
+    // VERIFIED (/gus, condensed)
+    intro: "Open Gus er for alle – også uden medlemskab. En times guidet saunagus med tre runder, dyp i poolen og en let forfriskning.",
+    primary: "Se tider og book",
+    secondary: "Hvad kan jeg forvente?",
+    sessions: {
+      eyebrow: "Vælg din gus",
+      heading: "To hold hver tirsdag aften", // VERIFIED (schedule on /gus)
+      body: "Vælg dato og tid i Glaeciers bookingkalender. Her ser du gusmester og ledige pladser for hver aften.",
+      card: {
+        label: "Din reservation",
+        experience: ["Oplevelse", "Open Gus · for ikke-medlemmer"],
+        day: ["Dag", "Hver tirsdag"],
+        time: "Tid",
+        slots: [
+          { name: "Første hold", time: "18:30–20:00" },
+          { name: "Andet hold", time: "20:30–22:00" },
+        ],
+        // VERIFIED – every session in the official calendar shows x/26 seats.
+        capacity: ["Hold", "Op til 26 gæster"],
+        gusmaster: ["Gusmester", "Vises i kalenderen"],
+        cta: "Se ledige pladser og book",
+        note: "Kalender, booking og betaling foregår i Glaeciers officielle system på glaecier.com.",
+      },
+      stepsHeading: "Sådan booker du",
+      // VERIFIED (the flow on /gus → /hold/)
+      steps: [
+        { title: "Vælg dato og tid", body: "Kalenderen viser de kommende tirsdage med gusmester og ledige pladser." },
+        { title: "Vælg antal pladser", body: "Udfyld navn, e-mail og telefonnummer – eller log ind, hvis du har en profil." },
+        { title: "Betal og mød op", body: "Gennemfør betalingen online, og mød op på Refshalevej 143." },
+      ],
+    },
+    expect: {
+      eyebrow: "Hvad kan du forvente",
+      heading: "Varme, kulde og ro",
+      items: [
+        // VERIFIED (FAQ + /gus)
+        { title: "Varmen", body: "Gusmesteren hælder vand med æteriske olier over de varme sten og guider dig gennem tre runder i panorama-saunaen på omkring 12 minutter." },
+        { title: "Kulden", body: "Mellem runderne dypper du dig i den flydende pool med rent, filtreret havnevand." },
+        // VERIFIED (light refreshments) + DRAFT phrasing
+        { title: "Roen", body: "Bagefter venter en let forfriskning og tid til at lande ved vandet." },
+      ],
+    },
+    practical: {
+      eyebrow: "Praktisk",
+      heading: "Før du kommer",
+      items: [
+        // VERIFIED
+        { label: "Hvor", value: "Refshalevej 143, 1432 København", note: "For enden af molen over for La Banchina." },
+        { label: "Hvornår", value: "Tirsdage 18:30–20:00 og 20:30–22:00" },
+        { label: "For hvem", value: "Alle – du behøver ikke at være medlem" },
+        // VERIFIED ("Register and Pay"); the price itself is shown in the booking, not on the public pages.
+        { label: "Betaling", value: "Online, når du booker" },
+      ],
+      directions: "Find vej",
+      faq: "Ofte stillede spørgsmål",
+      contact: "Spørgsmål? Skriv til",
+    },
+    member: {
+      heading: "Vil du komme oftere?",
+      // VERIFIED (membership details)
+      body: "Som medlem kommer du, når det passer dig – op til 10 besøg om måneden, inklusive gus og medlemsevents.",
+      cta: "Om medlemskab",
+    },
+  },
+  // Membership / sign-up page (/signup/). Both forms stay on glaecier.com (reCAPTCHA, terms, no public API).
+  signup: {
+    meta: {
+      title: "Bliv medlem – Glaecier",
+      description: "Tilmeld dig medlemslobbyen på Refshaleøen eller forhåndstilmeld dig Havnegade. Gratis og uforpligtende.",
+    },
+    eyebrow: "Bliv en del af Glaecier",
+    title: "Vælg dit sted. Find din ro.", // VERIFIED (glaecier.com/signup)
+    intro: "Sauna, havnebad og fællesskab i København. Vælg din lokation, og tilmeld dig.", // VERIFIED
+    refshaleoen: {
+      status: "Åben · Medlemslobby",
+      name: "Refshaleøen",
+      title: "Bliv en del af medlemslobbyen",
+      body: "Vores første saunafællesskab – på vandet, med udsigt over København.", // VERIFIED
+      // VERIFIED (signup-refshaleoen + FAQ)
+      points: [
+        "Tilmeldingen er gratis og uforpligtende.",
+        "Invitationer sendes tilfældigt ud for at sikre et mangfoldigt fællesskab.",
+        "Det er ikke en venteliste – alle har lige stor chance, uanset hvornår de tilmeldte sig.",
+        "Inviterede deltager i en obligatorisk introduktion, før medlemskabet starter.",
+      ],
+      cta: "Tilmeld dig lobbyen",
+    },
+    havnegade: {
+      status: "Åbner i 2027 · Forhåndstilmelding", // VERIFIED (glaecier.com/signup)
+      name: "Havnegade",
+      title: "Vær med fra begyndelsen",
+      body: "Et nyt frirum på vandet midt i byen – sauna, badning og ro.", // VERIFIED (condensed)
+      points: [
+        "Havnegade er en kommende lokation. Åbningsdato og detaljer bekræftes senere.",
+        "Forhåndstilmeldingen er uforpligtende og viser blot din interesse.", // VERIFIED
+        "Du får besked blandt de første, når vi åbner for medlemskab.", // VERIFIED
+      ],
+      cta: "Forhåndstilmeld dig",
+      placeholder: "Billeder følger",
+    },
+    prices: {
+      eyebrow: "Medlemskab på Refshaleøen",
+      heading: "Pris efter alder",
+      // VERIFIED (signup-refshaleoen, 2026-11-02)
+      tiers: [
+        { who: "18–24 år & studerende", price: "299" },
+        { who: "25–29 år & 65+ år", price: "349" },
+        { who: "30–65 år", price: "449" },
+      ],
+      unit: "kr./md.",
+      includes: "Op til 10 besøg om måneden, inklusive gus og medlemsevents.",
+      terms: ["Opstartsgebyr 399 kr.", "Binding de første tre måneder", "Opsigelse med én måneds varsel til den 1. i måneden"],
+      termsLink: "Medlems- og abonnementsvilkår",
+      havnegade: "Priser for Havnegade er endnu ikke offentliggjort.",
+    },
+    steps: {
+      eyebrow: "Sådan bliver du medlem",
+      heading: "Tre rolige skridt",
+      // VERIFIED (lobby process)
+      items: [
+        { title: "Tilmeld dig lobbyen", body: "Gratis og uforpligtende – i Glaeciers officielle formular." },
+        { title: "Invitationer trækkes tilfældigt", body: "Alle i lobbyen har lige stor chance – når som helst." },
+        { title: "Introduktion, og så er du medlem", body: "Inviterede deltager i en obligatorisk introduktion, før medlemskabet starter." },
+      ],
+    },
+    privacy: "Tilmeldingen foregår i Glaeciers officielle formular på glaecier.com, hvor du også accepterer vilkår og privatlivspolitik. Denne side gemmer ingen oplysninger.",
+    gus: { heading: "Vil du opleve Glaecier uden at være medlem?", cta: "Book Open Gus" }, // VERIFIED
+  },
   footer: {
+    signup: "Bliv medlem",
     contact: "Kontakt",
     more: "Mere",
     faq: "Ofte stillede spørgsmål",

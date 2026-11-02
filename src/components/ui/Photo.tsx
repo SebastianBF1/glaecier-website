@@ -14,6 +14,7 @@ export function Photo({
   className = "",
   imgClassName = "",
   effect,
+  priority = false,
 }: {
   item: MediaItem;
   locale: Locale;
@@ -21,6 +22,8 @@ export function Photo({
   className?: string;
   imgClassName?: string;
   effect?: "reveal" | "parallax";
+  /** Above-the-fold (page hero): load eagerly with high fetch priority. */
+  priority?: boolean;
 }) {
   return (
     <div className={`relative overflow-hidden bg-sand ${effect === "reveal" ? "img-reveal" : effect === "parallax" ? "img-parallax" : ""} ${className}`}>
@@ -29,6 +32,7 @@ export function Photo({
         alt={item.alt[locale]}
         fill
         sizes={sizes}
+        {...(priority && { loading: "eager" as const, fetchPriority: "high" as const })}
         className={`object-cover ${imgClassName}`}
         style={{ objectPosition: item.position }}
       />

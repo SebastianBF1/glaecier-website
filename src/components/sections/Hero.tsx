@@ -4,8 +4,8 @@ import type { Dictionary } from "@/content/dictionaries";
 import { getMedia, media, type MediaItem } from "@/content/media";
 import { site } from "@/content/site";
 import type { Locale } from "@/i18n/config";
-import { links } from "@/content/links";
-import { buttonClass, ExternalAction } from "@/components/ui/buttons";
+import { pages } from "@/content/links";
+import { buttonClass, InternalAction } from "@/components/ui/buttons";
 import { Wordmark } from "@/components/ui/Wordmark";
 import { HeroFilm } from "./HeroFilm";
 import { HeroSwitcher } from "./HeroSwitcher";
@@ -63,9 +63,9 @@ function HeroGolden({ t, locale }: Props) {
           <a href="#membership" className={buttonClass("text")}>
             {t.hero.primary}
           </a>
-          <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="text">
+          <InternalAction href={pages.book(locale)} variant="text">
             {t.hero.secondary}
-          </ExternalAction>
+          </InternalAction>
         </div>
       </div>
     </HeroFrame>
@@ -87,9 +87,9 @@ function HeroNordic({ t, locale }: Props) {
             <a href="#membership" className={buttonClass("solid")}>
               {t.hero.primary}
             </a>
-            <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="outline">
+            <InternalAction href={pages.book(locale)} variant="outline">
               {t.hero.secondary}
-            </ExternalAction>
+            </InternalAction>
           </div>
         </div>
       </div>
@@ -103,7 +103,7 @@ function HeroNordic({ t, locale }: Props) {
  * the footage stays the main attraction. Source: "Glacier intro Final 1", 62.0–66.0 s + 67.48–89.8 s (26.3 s; the
  * pool-signage shot is cut) with the burned-in subtitle band cropped off; see docs/refinement-05.md.
  */
-function HeroVideo({ t }: Props) {
+function HeroVideo({ t, locale }: Props) {
   const v = t.hero.video;
   const reveal = (step: number) => ({ "--d": `${0.3 + step * 0.12}s` }) as CSSProperties;
   return (
@@ -131,9 +131,9 @@ function HeroVideo({ t }: Props) {
         </p>
         <div className="hero-reveal mt-8 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-x-7 md:mt-9 md:gap-x-3" style={reveal(3)}>
           {/* Full-width primary action on phones. */}
-          <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="solid" className="max-sm:w-full">
+          <InternalAction href={pages.book(locale)} variant="solid" className="max-sm:w-full">
             {t.hero.secondary}
-          </ExternalAction>
+          </InternalAction>
           {/* Text link on phones (keeps the first screen compact), outlined button from md up. */}
           <a href="#membership" className={buttonClass("text", "md:border md:border-current/60 md:bg-none md:px-7 md:py-4 md:hover:border-current md:hover:bg-paper/10")}>
             {v.membership}

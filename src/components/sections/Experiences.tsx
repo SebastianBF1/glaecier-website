@@ -1,8 +1,8 @@
 import type { Dictionary } from "@/content/dictionaries";
 import { media } from "@/content/media";
 import type { Locale } from "@/i18n/config";
-import { links } from "@/content/links";
-import { buttonClass, ExternalAction } from "@/components/ui/buttons";
+import { pages } from "@/content/links";
+import { buttonClass, InternalAction } from "@/components/ui/buttons";
 import { Clip } from "@/components/ui/Clip";
 import { Photo } from "@/components/ui/Photo";
 import { SectionIntro } from "@/components/ui/SectionIntro";
@@ -25,9 +25,9 @@ export function Experiences({ t, locale }: { t: Dictionary; locale: Locale }) {
           <SectionIntro eyebrow={t.experiences.eyebrow} heading={t.experiences.heading} headingId="experiences-title" className="text-wood [&_h2]:text-ink" />
           <p className="reveal mt-6 text-lg leading-relaxed text-stone">{t.experiences.lead}</p>
           <div className="reveal mt-10">
-            <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="dark">
+            <InternalAction href={pages.book(locale)} variant="dark">
               {t.experiences.cta}
-            </ExternalAction>
+            </InternalAction>
           </div>
         </div>
       </div>
@@ -47,9 +47,9 @@ export function Experiences({ t, locale }: { t: Dictionary; locale: Locale }) {
             <h3 className="mt-2 font-serif text-2xl font-light md:text-3xl">{item.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-stone">{item.meta}</p>
             {i === 0 && (
-              <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="text" className="mt-4">
+              <InternalAction href={pages.book(locale)} variant="text" className="mt-4">
                 {item.action}
-              </ExternalAction>
+              </InternalAction>
             )}
             {i === 1 && (
               <a href="#membership" className={buttonClass("text", "mt-4")}>

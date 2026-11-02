@@ -91,6 +91,19 @@ export const media = {
   // Holmen harbour – the setting of Copenhagen's bathing tradition – opening the harbour-blue Our Story section.
   philosophy: m("dsc08007", "Poolen og havnen ved Holmen med Dannebrog", "The pool and the harbour at Holmen with the Danish flag", "50% 45%"),
   og: m("dsc07485", "Glaecier ved Refshaleøen", "Glaecier at Refshaleøen"),
+  // Book Open Gus page (/book/).
+  book: {
+    hero: m("dsc07649", "En gusmester gør klar i saunaen med et håndklæde", "A gusmaster preparing in the sauna with a towel", "58% 40%"),
+    heat: m("dsc07838", "Spanden med vand ved saunaens varme sten", "The water bucket by the sauna's hot stones", "50% 45%"),
+    cold: m("dsc07898", "Trappen ned i den flydende pool under pergolaen", "The steps down into the floating pool beneath the pergola", "45% 70%"),
+    rest: m("dsc08000", "Palmer i loungen med udsigt til poolen", "Palms in the lounge with a view of the pool", "45% 50%"),
+    arrive: m("dsc07719", "Trappen ned til dækket med havnen og Holmen bagved", "The stairs down to the deck with the harbour and Holmen beyond", "40% 60%"),
+  },
+  // Membership / sign-up page (/signup/). No photograph of Havnegade exists; that card is typographic.
+  signup: {
+    hero: m("dsc07485", "Trædækket, poolen og pergolaen på Refshaleøen ud mod havnen", "The timber deck, pool and pergola at Refshaleøen facing the harbour", "50% 62%"),
+    refshaleoen: m("dsc07608", "Poolen på Refshaleøen set fra trappen, med pergola og havn bagved", "The pool at Refshaleøen seen from the steps, with the pergola and harbour beyond", "50% 60%"),
+  },
 };
 
 export const getMedia = (item: MediaItem) => inventory[item.slug];

@@ -2,12 +2,12 @@ import Link from "next/link";
 import type { Dictionary } from "@/content/dictionaries";
 import { site } from "@/content/site";
 import { locales, type Locale } from "@/i18n/config";
-import { links } from "@/content/links";
-import { ExternalAction } from "@/components/ui/buttons";
+import { links, pages, type Page } from "@/content/links";
+import { ExternalAction, InternalAction } from "@/components/ui/buttons";
 import { Wordmark } from "@/components/ui/Wordmark";
 
 /** A closing scene: wordmark and the two ways in, then contact, hours and language in a quiet grid. */
-export function SiteFooter({ t, locale }: { t: Dictionary; locale: Locale }) {
+export function SiteFooter({ t, locale, page = "home" }: { t: Dictionary; locale: Locale; page?: Page }) {
   return (
     <footer className="bg-ink pt-24 pb-10 text-paper md:pt-32">
       <div className="container-page">
@@ -17,9 +17,9 @@ export function SiteFooter({ t, locale }: { t: Dictionary; locale: Locale }) {
             <p className="mt-6 max-w-sm font-serif text-xl leading-snug font-light text-paper/80 md:text-2xl">{t.hero.video.sub}</p>
           </div>
           <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-8">
-            <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="solid" className="max-sm:w-full">
+            <InternalAction href={pages.book(locale)} variant="solid" className="max-sm:w-full">
               {t.footer.book}
-            </ExternalAction>
+            </InternalAction>
             <ExternalAction href={links.memberLogin} newTab={t.nav.newTab} variant="text">
               {t.footer.login}
             </ExternalAction>
@@ -63,6 +63,11 @@ export function SiteFooter({ t, locale }: { t: Dictionary; locale: Locale }) {
             <h2 className="eyebrow text-fog">{t.footer.more}</h2>
             <ul className="mt-5">
               <li>
+                <InternalAction href={pages.signup(locale)} variant="text">
+                  {t.footer.signup}
+                </InternalAction>
+              </li>
+              <li>
                 <ExternalAction href={links.faq[locale]} newTab={t.nav.newTab} variant="text">
                   {t.footer.faq}
                 </ExternalAction>
@@ -77,7 +82,7 @@ export function SiteFooter({ t, locale }: { t: Dictionary; locale: Locale }) {
                 <li key={l}>
                   <Link
                     prefetch={false}
-                    href={`/${l}`}
+                    href={pages[page](l)}
                     hrefLang={l}
                     lang={l}
                     aria-current={l === locale ? "page" : undefined}

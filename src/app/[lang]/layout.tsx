@@ -3,9 +3,8 @@ import { Manrope, Newsreader } from "next/font/google";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { getDictionary } from "@/content/dictionaries";
-import { getMedia, media } from "@/content/media";
-import { site } from "@/content/site";
 import { isLocale, locales } from "@/i18n/config";
+import { pageMetadata } from "@/lib/metadata";
 import "../globals.css";
 
 // Manrope is the sans used on the current glaecier.com; Newsreader is the new editorial serif.
@@ -23,24 +22,7 @@ export async function generateMetadata({ params }: Omit<Props, "children">): Pro
   const { lang } = await params;
   if (!isLocale(lang)) return {};
   const t = getDictionary(lang);
-  const og = getMedia(media.og);
-  return {
-    metadataBase: new URL(site.url),
-    title: t.meta.title,
-    description: t.meta.description,
-    // Relative to metadataBase (which includes the base path on GitHub Pages).
-    alternates: { canonical: `${lang}/`, languages: { da: "da/", en: "en/", "x-default": "da/" } },
-    openGraph: {
-      type: "website",
-      siteName: site.name,
-      locale: lang === "da" ? "da_DK" : "en_GB",
-      title: t.meta.title,
-      description: t.meta.description,
-      images: [{ url: og.src.slice(1), width: og.width, height: og.height, alt: media.og.alt[lang] }],
-    },
-    // PROTOTYPE: keep out of search engines until launch.
-    robots: { index: false, follow: false },
-  };
+  return pageMetadata(lang, t.meta);
 }
 
 export default async function RootLayout({ children, params }: Props) {

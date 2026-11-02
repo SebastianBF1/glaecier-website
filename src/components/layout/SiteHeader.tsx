@@ -5,22 +5,26 @@ import { useEffect, useRef, useState } from "react";
 import type { Dictionary } from "@/content/dictionaries";
 import { site } from "@/content/site";
 import { locales, type Locale } from "@/i18n/config";
-import { links } from "@/content/links";
-import { ExternalAction } from "@/components/ui/buttons";
+import { links, pages, type Page } from "@/content/links";
+import { ExternalAction, InternalAction } from "@/components/ui/buttons";
 import { Wordmark } from "@/components/ui/Wordmark";
 
 type NavItem = Dictionary["nav"]["items"][number];
 // Only what the header needs, so the full dictionary isn't serialised into the client bundle.
 export type HeaderText = Pick<Dictionary, "nav" | "prototype">;
 
-function LanguageSwitch({ t, locale, className = "" }: { t: HeaderText; locale: Locale; className?: string }) {
+/** Where a nav item points: Membership has its own page; the rest are sections of the homepage. */
+const itemHref = (id: string, locale: Locale, page: Page) =>
+  id === "membership" ? pages.signup(locale) : page === "home" ? `#${id}` : `${pages.home(locale)}#${id}`;
+
+function LanguageSwitch({ t, locale, page, className = "" }: { t: HeaderText; locale: Locale; page: Page; className?: string }) {
   return (
     <div role="group" aria-label={t.nav.language.label} className={`eyebrow flex items-center gap-1.5 ${className}`}>
       {locales.map((l, i) => (
         <span key={l} className="flex items-center gap-1.5">
           {i > 0 && <span aria-hidden="true" className="opacity-40">/</span>}
           <Link prefetch={false}
-            href={`/${l}`}
+            href={pages[page](l)}
             hrefLang={l}
             lang={l}
             aria-current={l === locale ? "page" : undefined}
@@ -35,7 +39,7 @@ function LanguageSwitch({ t, locale, className = "" }: { t: HeaderText; locale: 
 }
 
 /** Desktop disclosure for a nav item with children (Private & Corporate). Click, Enter/Space or hover opens; Esc closes. */
-function NavGroup({ item }: { item: NavItem }) {
+function NavGroup({ item, base }: { item: NavItem; base: string }) {
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLLIElement>(null);
   const button = useRef<HTMLButtonElement>(null);
@@ -87,9 +91,9 @@ function NavGroup({ item }: { item: NavItem }) {
         <ul className="min-w-60 bg-paper py-3 text-ink shadow-[0_18px_40px_-20px_rgb(28_27_25/0.45)]">
           {item.children.map((child) => (
             <li key={child.id}>
-              <a href={`#${child.id}`} onClick={() => setOpen(false)} className="block px-6 py-2.5 text-sm transition-colors hover:bg-sand/70">
+              <Link prefetch={false} href={`${base}#${child.id}`} onClick={() => setOpen(false)} className="block px-6 py-2.5 text-sm transition-colors hover:bg-sand/70">
                 {child.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -98,7 +102,7 @@ function NavGroup({ item }: { item: NavItem }) {
   );
 }
 
-export function SiteHeader({ t, locale }: { t: HeaderText; locale: Locale }) {
+export function SiteHeader({ t, locale, page = "home" }: { t: HeaderText; locale: Locale; page?: Page }) {
   const [solid, setSolid] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
 
@@ -106,14 +110,18 @@ export function SiteHeader({ t, locale }: { t: HeaderText; locale: Locale }) {
     // Transparent over the full-screen hero film; the light header takes over just before the hero ends.
     const onScroll = () => {
       const hero = document.querySelector<HTMLElement>("[data-hero]");
-      setSolid(window.scrollY > (hero ? hero.offsetHeight - 96 : 48));
+      // 128 > the 96px scroll-padding, so an in-page jump from the hero to the next section lands on the light header.
+      setSolid(window.scrollY > (hero ? hero.offsetHeight - 128 : 48));
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
+    // The header instance survives client-side navigation between pages: close the menu and re-measure the new hero.
+    dialog.current?.close();
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [page]);
 
   const close = () => dialog.current?.close();
+  const base = page === "home" ? "" : pages.home(locale);
 
   return (
     <header
@@ -153,12 +161,17 @@ export function SiteHeader({ t, locale }: { t: HeaderText; locale: Locale }) {
           <ul className="flex items-center gap-8 2xl:gap-12">
             {t.nav.items.map((item) =>
               item.children.length ? (
-                <NavGroup key={item.id} item={item} />
+                <NavGroup key={item.id} item={item} base={base} />
               ) : (
                 <li key={item.id}>
-                  <a href={`#${item.id}`} className="eyebrow link-underline py-2 whitespace-nowrap">
+                  <Link
+                    prefetch={false}
+                    href={itemHref(item.id, locale, page)}
+                    aria-current={item.id === "membership" && page === "signup" ? "page" : undefined}
+                    className="eyebrow link-underline py-2 whitespace-nowrap aria-[current=page]:bg-[length:100%_1px]"
+                  >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ),
             )}
@@ -166,14 +179,14 @@ export function SiteHeader({ t, locale }: { t: HeaderText; locale: Locale }) {
         </nav>
 
         <div className="ml-auto flex items-center gap-6 xl:gap-5 2xl:gap-7">
-          <LanguageSwitch t={t} locale={locale} className="hidden xl:flex" />
+          <LanguageSwitch t={t} locale={locale} page={page} className="hidden xl:flex" />
           <ExternalAction href={links.memberLogin} newTab={t.nav.newTab} variant="text" className="max-lg:hidden">
             {t.nav.login}
           </ExternalAction>
           <span aria-hidden="true" className="hidden h-5 w-px bg-current opacity-25 lg:max-xl:block 2xl:block" />
-          <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant={solid ? "pillDark" : "pillLight"}>
+          <InternalAction href={pages.book(locale)} current={page === "book"} variant={solid ? "pillDark" : "pillLight"}>
             {t.nav.book}
-          </ExternalAction>
+          </InternalAction>
         </div>
       </div>
 
@@ -199,16 +212,16 @@ export function SiteHeader({ t, locale }: { t: HeaderText; locale: Locale }) {
             <ul className="space-y-2">
               {t.nav.items.map((item) => (
                 <li key={item.id} className="menu-item">
-                  <a href={`#${item.id}`} onClick={close} className="block py-2 font-serif text-4xl font-light md:text-5xl">
+                  <Link prefetch={false} href={itemHref(item.id, locale, page)} onClick={close} className="block py-2 font-serif text-4xl font-light md:text-5xl">
                     {item.label}
-                  </a>
+                  </Link>
                   {item.children.length > 0 && (
                     <ul className="mt-1 mb-3 flex flex-wrap gap-x-6 gap-y-1 text-fog">
                       {item.children.map((child) => (
                         <li key={child.id}>
-                          <a href={`#${child.id}`} onClick={close} className="block py-1.5 text-sm hover:text-paper">
+                          <Link prefetch={false} href={`${base}#${child.id}`} onClick={close} className="block py-1.5 text-sm hover:text-paper">
                             {child.label}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -220,9 +233,9 @@ export function SiteHeader({ t, locale }: { t: HeaderText; locale: Locale }) {
 
           <div className="mt-auto space-y-8 pt-12">
             <div className="flex flex-wrap gap-3">
-              <ExternalAction href={links.bookOpenGus} newTab={t.nav.newTab} variant="solid">
+              <InternalAction href={pages.book(locale)} variant="solid">
                 {t.nav.book}
-              </ExternalAction>
+              </InternalAction>
               <ExternalAction href={links.memberLogin} newTab={t.nav.newTab} variant="outline">
                 {t.nav.login}
               </ExternalAction>
@@ -231,7 +244,7 @@ export function SiteHeader({ t, locale }: { t: HeaderText; locale: Locale }) {
               <a href={`mailto:${site.email}`} className="hover:text-paper">
                 {site.email}
               </a>
-              <LanguageSwitch t={t} locale={locale} className="text-paper" />
+              <LanguageSwitch t={t} locale={locale} page={page} className="text-paper" />
             </div>
           </div>
         </div>

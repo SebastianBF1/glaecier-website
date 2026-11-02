@@ -1,8 +1,8 @@
 import type { Dictionary } from "@/content/dictionaries";
 import { media } from "@/content/media";
 import type { Locale } from "@/i18n/config";
-import { links } from "@/content/links";
-import { ExternalAction } from "@/components/ui/buttons";
+import { pages } from "@/content/links";
+import { InternalAction } from "@/components/ui/buttons";
 import { Photo } from "@/components/ui/Photo";
 import { SectionIntro } from "@/components/ui/SectionIntro";
 
@@ -42,17 +42,17 @@ export function Membership({ t, locale }: { t: Dictionary; locale: Locale }) {
               <p className="eyebrow text-fog">{lobby.label}</p>
               <h3 className="mt-3 font-serif text-3xl font-light md:text-[2.125rem]">{lobby.title}</h3>
               <p className="mt-4 max-w-sm leading-relaxed text-paper/80">{lobby.body}</p>
-              <ExternalAction href={links.signupRefshaleoen} newTab={t.nav.newTab} variant="solid" className="mt-8 max-sm:w-full">
+              <InternalAction href={`${pages.signup(locale)}#refshaleoen`} variant="solid" className="mt-8 max-sm:w-full">
                 {lobby.cta}
-              </ExternalAction>
+              </InternalAction>
             </div>
             <div className="reveal bg-harbour/70 p-7">
               <p className="eyebrow text-fog">{havnegade.label}</p>
               <h3 className="mt-3 font-serif text-[1.75rem] font-light">{havnegade.title}</h3>
               <p className="mt-4 max-w-sm leading-relaxed text-paper/80">{havnegade.body}</p>
-              <ExternalAction href={links.signupHavnegade} newTab={t.nav.newTab} variant="text" className="mt-6">
+              <InternalAction href={`${pages.signup(locale)}#havnegade`} variant="text" className="mt-6">
                 {havnegade.cta}
-              </ExternalAction>
+              </InternalAction>
             </div>
           </div>
         </div>

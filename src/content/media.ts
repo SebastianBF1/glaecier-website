@@ -44,8 +44,6 @@ export const media = {
       mobile: m("dsc07608", "Poolen set fra trappen, med pergola og havn bagved", "The pool seen from the steps, with the pergola and harbour beyond", "50% 60%"),
     },
   },
-  // Desktop backdrop behind the video panel (decorative, so no alt is rendered).
-  heroVideoBackdrop: m("dsc07767", "Mørkt rum med vindue mod havnen og en lille båd", "Dark room with a window onto the harbour and a small boat", "50% 62%"),
   // A quiet human moment straight after the hero: a guest by the window, seen through glass and reflections.
   intro: m("dsc07653", "En gæst ved vinduet, set gennem glas og spejlinger", "A guest by the window, seen through glass and reflections", "42% 45%"),
   // All supplied photos, including those showing people, are approved for publication (client, 2026-10-30).

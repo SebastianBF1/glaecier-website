@@ -103,7 +103,11 @@ export function SiteHeader({ t, locale }: { t: HeaderText; locale: Locale }) {
   const dialog = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 48);
+    // Transparent over the full-screen hero film; the light header takes over just before the hero ends.
+    const onScroll = () => {
+      const hero = document.querySelector<HTMLElement>("[data-hero]");
+      setSolid(window.scrollY > (hero ? hero.offsetHeight - 96 : 48));
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);

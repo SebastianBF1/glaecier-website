@@ -17,8 +17,10 @@ assets/videos/*
 # the rest, the rejected/AI images and the dev-only Hero A photo stay local).
 # To publish another photo, add its .jpg and its -320/-640 (???) and -1080/-1600 (????) .webp sizes here.
 public/media/*
-!public/media/hero-video.mp4
-!public/media/hero-video-poster.jpg
+!public/media/hero-film-desktop.mp4
+!public/media/hero-film-mobile.mp4
+!public/media/hero-film-desktop-poster.jpg
+!public/media/hero-film-mobile-poster.jpg
 !public/media/dsc07485.jpg
 !public/media/dsc07485-???.webp
 !public/media/dsc07485-????.webp
@@ -37,9 +39,6 @@ public/media/*
 !public/media/dsc07653.jpg
 !public/media/dsc07653-???.webp
 !public/media/dsc07653-????.webp
-!public/media/dsc07767.jpg
-!public/media/dsc07767-???.webp
-!public/media/dsc07767-????.webp
 !public/media/dsc07769.jpg
 !public/media/dsc07769-???.webp
 !public/media/dsc07769-????.webp

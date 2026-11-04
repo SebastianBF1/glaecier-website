@@ -39,9 +39,9 @@ export function Locations({ t, locale }: { t: Dictionary; locale: Locale }) {
           <Photo
             item={media.locations.havnegade}
             locale={locale}
-            sizes="(min-width: 768px) 50vw, 100vw"
+            sizes="(min-width: 768px) 66vw, 100vw"
             effect="reveal"
-            className="aspect-[3/2] md:col-span-6 md:col-start-2"
+            className="-mx-5 aspect-[4/3] md:col-span-8 md:mx-0 md:aspect-[16/10]"
           />
           <div className="reveal md:col-span-4 md:col-start-9 md:self-end">
             <p className="eyebrow text-wood">{havnegade.status}</p>

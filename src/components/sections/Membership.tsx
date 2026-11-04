@@ -50,7 +50,7 @@ export function Membership({ t, locale }: { t: Dictionary; locale: Locale }) {
               <p className="eyebrow text-fog">{havnegade.label}</p>
               <h3 className="mt-3 font-serif text-[1.75rem] font-light">{havnegade.title}</h3>
               <p className="mt-4 max-w-sm leading-relaxed text-paper/80">{havnegade.body}</p>
-              <InternalAction href={`${pages.signup(locale)}#havnegade`} variant="text" className="mt-6">
+              <InternalAction href={`${pages.signup(locale)}#havnegade`} variant="solid" className="mt-8 max-sm:w-full">
                 {havnegade.cta}
               </InternalAction>
             </div>

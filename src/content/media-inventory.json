@@ -709,14 +709,14 @@
     "file": "Havnegade havnebus.jpg",
     "slug": "havnegade-havnebus",
     "src": "/media/havnegade-havnebus.jpg",
-    "width": 560,
-    "height": 367,
-    "originalWidth": 560,
-    "originalHeight": 367,
+    "width": 1498,
+    "height": 1050,
+    "originalWidth": 1498,
+    "originalHeight": 1050,
     "orientation": "landscape",
-    "bytes": 77096,
+    "bytes": 746480,
     "hasExif": false,
-    "hash": "0100011101001111000011110110110111110111011111111101111111011100"
+    "hash": "0100011101000111100010110100110001110100011111110101110111111100"
   },
   "historisk-havn": {
     "file": "Historisk havn.jpg",

@@ -80,7 +80,7 @@ export const media = {
   membership: m("dsc08126", "En gæst med saunahat ser ud over havnen og en gul havnebus", "A guest in a sauna hat looking out over the harbour and a yellow harbour bus", "60% 50%"),
   locations: {
     refshaleoen: m("dsc08017", "En liggestol i træ på dækket ud mod havnen", "A wooden lounger on the deck facing the harbour", "45% 60%"),
-    // Harbour view with a harbour bus at sunset (client, 2026-11-04); only a 560×367 copy exists.
+    // Harbour view with a harbour bus at sunset (client, 2026-11-04).
     havnegade: m(
       "havnegade-havnebus",
       "Havnen ved solnedgang med en gul havnebus på vandet og byens tårne bag kajen",

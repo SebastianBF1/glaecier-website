@@ -80,7 +80,13 @@ export const media = {
   membership: m("dsc08126", "En gæst med saunahat ser ud over havnen og en gul havnebus", "A guest in a sauna hat looking out over the harbour and a yellow harbour bus", "60% 50%"),
   locations: {
     refshaleoen: m("dsc08017", "En liggestol i træ på dækket ud mod havnen", "A wooden lounger on the deck facing the harbour", "45% 60%"),
-    // No photograph of Havnegade exists yet; the component renders a neutral placeholder.
+    // Harbour view with a harbour bus at sunset (client, 2026-11-04); only a 560×367 copy exists.
+    havnegade: m(
+      "havnegade-havnebus",
+      "Havnen ved solnedgang med en gul havnebus på vandet og byens tårne bag kajen",
+      "The harbour at sunset with a yellow harbour bus on the water and the city's spires beyond the quay",
+      "62% 50%",
+    ),
   },
   hire: {
     main: m("dsc07799", "Varme pendellamper i loungen", "Warm pendant lamps in the lounge", "50% 40%"),

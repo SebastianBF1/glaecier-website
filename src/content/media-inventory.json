@@ -705,6 +705,19 @@
     "hasExif": false,
     "hash": "0111111101011011110110110101100001011000111100101010001010100110"
   },
+  "havnegade-havnebus": {
+    "file": "Havnegade havnebus.jpg",
+    "slug": "havnegade-havnebus",
+    "src": "/media/havnegade-havnebus.jpg",
+    "width": 560,
+    "height": 367,
+    "originalWidth": 560,
+    "originalHeight": 367,
+    "orientation": "landscape",
+    "bytes": 77096,
+    "hasExif": false,
+    "hash": "0100011101001111000011110110110111110111011111111101111111011100"
+  },
   "historisk-havn": {
     "file": "Historisk havn.jpg",
     "slug": "historisk-havn",

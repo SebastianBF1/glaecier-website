@@ -170,7 +170,6 @@ export const da = {
       status: "Kommende · forventet åbning i starten af 2027 – skal bekræftes",
       // VERIFIED (site) but launch details pending.
       body: "Direkte på vandet i hjertet af København. Adresse og åbningsdato bekræftes senere.",
-      placeholder: "Billeder følger",
     },
     hoursLink: "Åbningstider",
     hoursLabel: "Åbningstider for medlemmer",

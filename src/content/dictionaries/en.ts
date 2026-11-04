@@ -141,7 +141,6 @@ export const en: Dictionary = {
       name: "Havnegade",
       status: "Upcoming · expected to open early 2027 – to be confirmed",
       body: "Directly on the water in the heart of Copenhagen. Address and opening date to be confirmed.",
-      placeholder: "Photography to follow",
     },
     hoursLink: "Opening hours",
     hoursLabel: "Members’ opening hours",

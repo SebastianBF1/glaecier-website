@@ -6,8 +6,8 @@ import { buttonClass, InternalAction } from "@/components/ui/buttons";
 import { Photo } from "@/components/ui/Photo";
 
 /**
- * The page's one centred, symmetrical composition. It opens with the harbour at Holmen – where Copenhagen's
- * bathing tradition lives – dissolving into the section's deep harbour blue, so the colour change is the transition.
+ * The page's one centred, symmetrical composition. It opens with an archive photo of the old harbour – where
+ * Copenhagen's bathing tradition began – dissolving into the section's deep harbour blue, so the colour change is the transition.
  */
 export function Philosophy({ t, locale }: { t: Dictionary; locale: Locale }) {
   return (

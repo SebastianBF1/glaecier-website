@@ -88,8 +88,14 @@ export const media = {
     guests: m("event-gaester-i-haandklaeder", "Gæster i stribede håndklæder hviler på trædækket mellem saunarunderne", "Guests in striped towels resting on the deck between sauna rounds"),
     event: m("event-velkomst-paa-daekket", "Velkomstskilt til et brand-arrangement på dækket, med produkter og håndklæder på podier", "Welcome sign for a brand event on the deck, with products and towels on plinths"),
   },
-  // Holmen harbour – the setting of Copenhagen's bathing tradition – opening the harbour-blue Our Story section.
-  philosophy: m("dsc08007", "Poolen og havnen ved Holmen med Dannebrog", "The pool and the harbour at Holmen with the Danish flag", "50% 45%"),
+  // An archive photo of the old harbour opens the harbour-blue Our Story section: the 250-year tradition, shown.
+  // Only a 555×349 copy exists (client, 2026-11-04); a larger scan would look sharper on wide screens.
+  philosophy: m(
+    "historisk-havn",
+    "Historisk sort-hvid foto af havnen med badehus, robåde, en træbro og sejlskibe ved kajen",
+    "Historic black-and-white photo of the harbour with a bathhouse, rowing boats, a timber bridge and sailing ships at the quay",
+    "50% 28%",
+  ),
   og: m("dsc07485", "Glaecier ved Refshaleøen", "Glaecier at Refshaleøen"),
   // Book Open Gus page (/book/).
   book: {

@@ -705,6 +705,19 @@
     "hasExif": false,
     "hash": "0111111101011011110110110101100001011000111100101010001010100110"
   },
+  "historisk-havn": {
+    "file": "Historisk havn.jpg",
+    "slug": "historisk-havn",
+    "src": "/media/historisk-havn.jpg",
+    "width": 555,
+    "height": 349,
+    "originalWidth": 555,
+    "originalHeight": 349,
+    "orientation": "landscape",
+    "bytes": 91412,
+    "hasExif": false,
+    "hash": "1001101110001111100111111001000110100100001100010100000010001001"
+  },
   "pool": {
     "file": "Pool.jpg",
     "slug": "pool",

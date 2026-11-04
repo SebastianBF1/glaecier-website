@@ -111,8 +111,15 @@ export const media = {
     rest: m("dsc08000", "Palmer i loungen med udsigt til poolen", "Palms in the lounge with a view of the pool", "45% 50%"),
     arrive: m("dsc07719", "Trappen ned til dækket med havnen og Holmen bagved", "The stairs down to the deck with the harbour and Holmen beyond", "40% 60%"),
   },
-  // Membership / sign-up page (/signup/). No photograph of Havnegade exists; that card is typographic.
+  // Membership / sign-up page (/signup/).
   signup: {
+    // Same harbour photo as the homepage; the portrait frame needs the focus further right to keep the harbour bus.
+    havnegade: m(
+      "havnegade-havnebus",
+      "Havnen ved solnedgang med en gul havnebus på vandet og byens tårne bag kajen",
+      "The harbour at sunset with a yellow harbour bus on the water and the city's spires beyond the quay",
+      "76% 50%",
+    ),
     hero: m("dsc07485", "Trædækket, poolen og pergolaen på Refshaleøen ud mod havnen", "The timber deck, pool and pergola at Refshaleøen facing the harbour", "50% 62%"),
     refshaleoen: m("dsc07608", "Poolen på Refshaleøen set fra trappen, med pergola og havn bagved", "The pool at Refshaleøen seen from the steps, with the pergola and harbour beyond", "50% 60%"),
   },

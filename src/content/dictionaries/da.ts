@@ -321,7 +321,6 @@ export const da = {
         "Du får besked blandt de første, når vi åbner for medlemskab.", // VERIFIED
       ],
       cta: "Forhåndstilmeld dig",
-      placeholder: "Billeder følger",
     },
     prices: {
       eyebrow: "Medlemskab på Refshaleøen",

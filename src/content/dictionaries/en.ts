@@ -273,7 +273,6 @@ export const en: Dictionary = {
         "You'll be among the first to hear when membership opens.",
       ],
       cta: "Pre-register",
-      placeholder: "Photos to follow",
     },
     prices: {
       eyebrow: "Membership at Refshaleøen",

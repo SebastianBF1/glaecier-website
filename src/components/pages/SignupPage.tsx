@@ -41,8 +41,7 @@ export function SignupPage({ t, locale }: Props) {
         </a>
       </PageHero>
 
-      {/* The two locations side by side: an open club (photo, primary action) and an upcoming one (typographic harbour
-          panel – no photograph of Havnegade exists – with a secondary action). */}
+      {/* The two locations side by side: an open club (primary action) and an upcoming one (secondary action). */}
       <section aria-label={`${s.refshaleoen.name} · ${s.havnegade.name}`} className="bg-paper py-24 md:py-36">
         <div className="container-page grid gap-24 lg:grid-cols-2 lg:gap-10 xl:gap-16">
           <article id="refshaleoen" aria-labelledby="refshaleoen-title" className="scroll-mt-28">
@@ -66,13 +65,7 @@ export function SignupPage({ t, locale }: Props) {
           </article>
 
           <article id="havnegade" aria-labelledby="havnegade-title" className="scroll-mt-28 lg:mt-32">
-            <div className="reveal relative flex aspect-[4/5] flex-col justify-between overflow-hidden bg-harbour p-8 text-paper sm:aspect-[5/4] md:p-12 lg:aspect-[4/5]">
-              <p className="eyebrow text-fog">{s.havnegade.placeholder}</p>
-              <p aria-hidden="true" className="font-serif text-[clamp(5rem,20vw,11rem)] leading-[0.85] font-light tracking-[-0.03em] text-paper/90">
-                2027
-              </p>
-              <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/3 bg-[repeating-linear-gradient(to_bottom,transparent_0,transparent_11px,rgb(245_241_234/0.07)_11px,rgb(245_241_234/0.07)_12px)]" />
-            </div>
+            <Photo item={media.signup.havnegade} locale={locale} sizes="(min-width: 1024px) 45vw, 100vw" effect="reveal" className="aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5]" />
             <div className="reveal mt-10">
               <p className="eyebrow flex items-center gap-3 text-harbour">
                 <span aria-hidden="true" className="size-1.5 rounded-full border border-harbour" />

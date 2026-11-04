@@ -151,6 +151,13 @@ export function SiteHeader({ t, locale, page = "home" }: { t: HeaderText; locale
 
         <Link prefetch={false}
           href={`/${locale}`}
+          // Already home: Next won't navigate to the same URL, so go back up to the hero ourselves.
+          onClick={(e) => {
+            if (page !== "home") return;
+            e.preventDefault();
+            history.replaceState(history.state, "", location.pathname);
+            scrollTo({ top: 0 });
+          }}
           aria-label={t.nav.home}
           className="sm:absolute sm:left-1/2 sm:-translate-x-1/2 xl:static xl:translate-x-0"
         >

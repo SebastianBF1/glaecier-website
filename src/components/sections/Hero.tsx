@@ -5,7 +5,7 @@ import { getMedia, media, type MediaItem } from "@/content/media";
 import { site } from "@/content/site";
 import type { Locale } from "@/i18n/config";
 import { pages } from "@/content/links";
-import { buttonClass, InternalAction } from "@/components/ui/buttons";
+import { InternalAction } from "@/components/ui/buttons";
 import { Wordmark } from "@/components/ui/Wordmark";
 import { HeroFilm } from "./HeroFilm";
 import { HeroSwitcher } from "./HeroSwitcher";
@@ -60,9 +60,9 @@ function HeroGolden({ t, locale }: Props) {
         </div>
         <p className="eyebrow mt-8 text-paper/90">{t.hero.line}</p>
         <div className="mt-10 flex flex-wrap justify-center gap-x-10 gap-y-4">
-          <a href="#membership" className={buttonClass("text")}>
+          <InternalAction href={pages.signup(locale)} variant="text">
             {t.hero.primary}
-          </a>
+          </InternalAction>
           <InternalAction href={pages.book(locale)} variant="text">
             {t.hero.secondary}
           </InternalAction>
@@ -84,9 +84,9 @@ function HeroNordic({ t, locale }: Props) {
         <div className="md:col-span-4 md:col-start-9 md:pb-3 lg:col-span-3 lg:col-start-10">
           <p className="max-w-xs font-serif text-xl leading-snug font-light md:text-2xl">{t.hero.line}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#membership" className={buttonClass("solid")}>
+            <InternalAction href={pages.signup(locale)} variant="solid">
               {t.hero.primary}
-            </a>
+            </InternalAction>
             <InternalAction href={pages.book(locale)} variant="outline">
               {t.hero.secondary}
             </InternalAction>
@@ -135,9 +135,9 @@ function HeroVideo({ t, locale }: Props) {
             {t.hero.secondary}
           </InternalAction>
           {/* Text link on phones (keeps the first screen compact), outlined button from md up. */}
-          <a href="#membership" className={buttonClass("text", "md:border md:border-current/60 md:bg-none md:px-7 md:py-4 md:hover:border-current md:hover:bg-paper/10")}>
+          <InternalAction href={pages.signup(locale)} variant="text" className="md:border md:border-current/60 md:bg-none md:px-7 md:py-4 md:hover:border-current md:hover:bg-paper/10">
             {v.membership}
-          </a>
+          </InternalAction>
         </div>
       </div>
     </section>

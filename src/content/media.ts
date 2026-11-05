@@ -57,7 +57,13 @@ export const media = {
     pool: m("dsc07890", "Poolen med trappe og gelænder under dækkets pergola", "The pool with steps and handrail beneath the deck pergola", "50% 75%"),
     // Small water detail set against the pool frame.
     detail: m("dsc07504", "Poolens mosaikfliser under vandet", "The pool's mosaic tiles under the water", "40% 50%"),
-    deck: m("dsc07963", "Dækket med liggestole og en glaspavillon ud mod vandet", "The deck with loungers and a glazed pavilion facing the water", "62% 50%"),
+    // Guests in the pool at sunset, with the deck, loungers and Holmen's ships beyond (client, 2026-11-05).
+    deck: m(
+      "pool-ved-solnedgang",
+      "Gæster i poolen ved solnedgang, med trædæk, liggestole og skibene ved Holmen bag vandet",
+      "Guests in the pool at sunset, with the timber deck, loungers and the ships at Holmen across the water",
+      "50% 60%",
+    ),
   },
   experiences: {
     // Phone clip (464×832, 7.9 s) shown at native size; a higher-resolution original would look sharper on large screens.

@@ -55,8 +55,12 @@ export const media = {
   facilities: {
     sauna: m("dsc07850", "Panorama-saunaen med træbænke, sten og vinduer mod havnen", "The panorama sauna with timber benches, stones and windows to the harbour", "50% 55%"),
     pool: m("dsc07890", "Poolen med trappe og gelænder under dækkets pergola", "The pool with steps and handrail beneath the deck pergola", "50% 75%"),
-    // Small water detail set against the pool frame.
-    detail: m("dsc07504", "Poolens mosaikfliser under vandet", "The pool's mosaic tiles under the water", "40% 50%"),
+    // The pool's mosaic edge at sunset, set against the daytime pool frame (client, 2026-11-06).
+    detail: m(
+      "poolkant-ved-solnedgang",
+      "Poolens kant af blå mosaikfliser ved solnedgang, med liggestole og den gamle mastekran på Holmen bagved",
+      "The pool's blue mosaic edge at sunset, with loungers and the old mast crane at Holmen beyond",
+    ),
     // Guests in the pool at sunset, with the deck, loungers and Holmen's ships beyond (client, 2026-11-05).
     deck: m(
       "pool-ved-solnedgang",

@@ -758,6 +758,19 @@
     "hash": "0001101100000111000111110000101001000010000011010000100100110111",
     "duplicateGroup": 2
   },
+  "poolkant-ved-solnedgang": {
+    "file": "Poolkant ved solnedgang.jpg",
+    "slug": "poolkant-ved-solnedgang",
+    "src": "/media/poolkant-ved-solnedgang.jpg",
+    "width": 1024,
+    "height": 1536,
+    "originalWidth": 1024,
+    "originalHeight": 1536,
+    "orientation": "portrait",
+    "bytes": 403625,
+    "hasExif": false,
+    "hash": "0100100100110011001000111011001100100011000000001000000100001001"
+  },
   "saunaens-gyldne-vandoejeblik": {
     "file": "Saunaens gyldne vandøjeblik.png",
     "slug": "saunaens-gyldne-vandoejeblik",
